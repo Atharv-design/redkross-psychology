@@ -101,7 +101,7 @@ export default function AmbienceAudioPlayer() {
     const audio = audioRef.current;
     if (!audio) return;
 
-    if (isPlaying) {
+    if (!audio.paused || synthRef.current) {
       audio.pause();
       stopSynth();
       setIsPlaying(false);
