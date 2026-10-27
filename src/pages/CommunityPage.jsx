@@ -175,61 +175,90 @@ export default function CommunityPage() {
         </motion.div>
       </section>
 
-      {/* Community Charter */}
+      {/* Community Charter - 2x2 Grid with Signature Themed Cards */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-16 max-w-5xl mx-auto">
-        <div className="rounded-3xl p-8 sm:p-12 bg-gradient-to-b from-[#0B1E2E]/90 to-[#07131F]/90 backdrop-blur-2xl border border-teal-500/30">
-          <div className="text-center max-w-2xl mx-auto mb-8 space-y-2">
-            <ShieldCheck className="w-8 h-8 text-teal-400 mx-auto" />
-            <h3 className="text-xl sm:text-2xl font-royal font-bold uppercase tracking-tight bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
-              COMMUNITY CIRCLE SAFEGUARDING CHARTER
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-300/80 font-sans">
-              Every peer circle and public gathering operates under four non-negotiable community values.
-            </p>
-          </div>
+        <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
+          <ShieldCheck className="w-8 h-8 text-teal-400 mx-auto" />
+          <h3 className="text-xl sm:text-3xl font-royal font-bold uppercase tracking-tight bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
+            COMMUNITY CIRCLE SAFEGUARDING CHARTER
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-300/80 font-sans">
+            Every peer circle and public gathering operates under four non-negotiable community values.
+          </p>
+        </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              {
-                title: "Radical Empathy",
-                desc: "We listen to understand, not to judge or offer unasked prescriptive advice."
-              },
-              {
-                title: "Circle Privacy",
-                desc: "Stories shared within community support groups remain strictly within that circle."
-              },
-              {
-                title: "Zero Clinical Claims",
-                desc: "Peer spaces do not replace medical psychiatry or professional psychotherapy."
-              },
-              {
-                title: "Inclusive Dignity",
-                desc: "Zero tolerance for discrimination based on caste, gender, faith, or background."
-              }
-            ].map((p, pidx) => (
-              <div key={pidx} className="p-4 rounded-xl bg-[#06101B]/80 border border-teal-500/20">
-                <h4 className="text-xs font-royal font-bold uppercase text-teal-200 mb-1.5">{p.title}</h4>
-                <p className="text-xs text-slate-300/80 font-sans leading-relaxed">{p.desc}</p>
-              </div>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+          {[
+            {
+              title: "Radical Empathy",
+              desc: "We listen to understand, not to judge or offer unasked prescriptive advice.",
+              tag: "NON-JUDGMENTAL",
+              variant: 2
+            },
+            {
+              title: "Circle Privacy",
+              desc: "Stories shared within community support groups remain strictly within that circle.",
+              tag: "STRICT PRIVACY",
+              variant: 6
+            },
+            {
+              title: "Zero Clinical Claims",
+              desc: "Peer spaces do not replace medical psychiatry or professional psychotherapy.",
+              tag: "BOUNDARIES",
+              variant: 8
+            },
+            {
+              title: "Inclusive Dignity",
+              desc: "Zero tolerance for discrimination based on caste, gender, faith, or background.",
+              tag: "UNIVERSAL CARE",
+              variant: 5
+            }
+          ].map((p, pidx) => (
+            <PsychologyThemedCard
+              key={pidx}
+              variant={p.variant}
+              tagLeft={p.tag}
+              tagRight="Core Pillar"
+              title={p.title}
+              description={p.desc}
+              bullets={[
+                "Unconditional positive regard",
+                "Safe emotional sharing boundaries",
+                "Community-first integrity"
+              ]}
+              meta1={{ icon: ShieldCheck, label: "Safeguarded Space" }}
+              meta2={{ icon: Users, label: "Community Circle" }}
+              ctaText="Read Charter Policy"
+              ctaLink="#volunteer-form"
+              motionVariants={itemVariants}
+            />
+          ))}
         </div>
       </section>
 
-      {/* Volunteer Registration Form */}
+      {/* Volunteer Registration Form with Signature Themed Card Motif */}
       <section id="volunteer-form" className="relative px-4 sm:px-6 lg:px-8 py-16 max-w-4xl mx-auto">
-        <div className="rounded-3xl p-8 sm:p-12 bg-[#0B1E2E]/90 backdrop-blur-2xl border border-teal-500/30 shadow-2xl relative">
-          <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
-            <span className="px-3 py-1 rounded-full text-xs font-mono tracking-wider bg-teal-950/80 text-teal-300 border border-teal-500/40">
-              JOIN THE VOLUNTEER CORPS
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-royal font-bold uppercase tracking-tight bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
-              BECOME A COMMUNITY ADVOCATE
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-300/80 font-sans">
-              Help coordinate local awareness camps, distribute psychoeducation booklets, or co-facilitate open-air mindful mornings.
-            </p>
-          </div>
+        <div className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 shadow-2xl relative overflow-hidden group">
+          {/* Signature Themed Card Background Artwork */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-luminosity group-hover:opacity-25 transition-opacity duration-700 pointer-events-none scale-105"
+            style={{ backgroundImage: `url('/assets/cards/card-group-therapy-fullspan.png')` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#06101B]/95 via-[#06101B]/85 to-[#06101B]/75 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-teal-500/10 rounded-full blur-[80px] pointer-events-none" />
+
+          <div className="relative z-10">
+            <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
+              <span className="px-3 py-1 rounded-full text-xs font-mono tracking-wider bg-teal-950/80 text-teal-300 border border-teal-500/40">
+                JOIN THE VOLUNTEER CORPS
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-royal font-bold uppercase tracking-tight bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
+                BECOME A COMMUNITY ADVOCATE
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-300/80 font-sans">
+                Help coordinate local awareness camps, distribute psychoeducation booklets, or co-facilitate open-air mindful mornings.
+              </p>
+            </div>
 
           {submitted ? (
             <motion.div 
@@ -352,6 +381,7 @@ export default function CommunityPage() {
               </button>
             </form>
           )}
+          </div>
         </div>
       </section>
     </div>

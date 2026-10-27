@@ -244,7 +244,7 @@ export default function HomePage() {
           initial="hidden"
           whileInView="visible"
           viewport={bidirectionalViewport}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto"
         >
           {paths.map((p, idx) => (
             <PsychologyThemedCard
@@ -385,37 +385,27 @@ export default function HomePage() {
               initial="hidden"
               whileInView="visible"
               viewport={bidirectionalViewport}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative"
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto"
             >
-              {/* Connecting line on desktop behind step badges */}
-              <div className="hidden lg:block absolute top-6 left-12 right-12 h-[2px] bg-gradient-to-r from-teal-500/30 via-teal-400/50 to-teal-500/30 z-0 pointer-events-none" />
-
-              {howSupportWorks.map((step) => (
-                <motion.div 
+              {howSupportWorks.map((step, idx) => (
+                <PsychologyThemedCard
                   key={step.step}
-                  variants={itemVariants}
-                  className="relative z-10 flex flex-col group/step"
-                >
-                  {/* Step Number Badge with Glowing Ring */}
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className="w-12 h-12 rounded-2xl bg-[#06101B] border-2 border-teal-400/60 group-hover/step:border-teal-300 text-teal-300 font-mono font-bold text-base flex items-center justify-center shadow-lg shadow-teal-950/50 group-hover/step:scale-105 group-hover/step:shadow-teal-400/30 transition-all duration-300">
-                      {step.step}
-                    </div>
-                    <span className="text-[10px] font-mono px-2.5 py-1 rounded-lg bg-teal-500/10 text-teal-300 border border-teal-500/25 font-semibold uppercase tracking-wider">
-                      {step.badge}
-                    </span>
-                  </div>
-
-                  {/* Step Title */}
-                  <h3 className="text-base sm:text-lg font-bold mb-2.5 leading-snug font-royal uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/step:opacity-90 transition-opacity">
-                    {step.title}
-                  </h3>
-
-                  {/* Step Description */}
-                  <p className="text-xs sm:text-sm text-slate-300/90 leading-relaxed font-light">
-                    {step.description}
-                  </p>
-                </motion.div>
+                  variant={[1, 8, 9, 10][idx % 4]}
+                  tagLeft={step.badge}
+                  tagRight={`Phase ${step.step}`}
+                  title={step.title}
+                  description={step.description}
+                  bullets={[
+                    "Transparent communication & zero pressure",
+                    "Complete data minimisation guarantee",
+                    "Immediate withdrawal rights at any point"
+                  ]}
+                  meta1={{ icon: ShieldCheck, label: "Verified Protocol" }}
+                  meta2={{ icon: Clock, label: `Phase ${step.step} of 04` }}
+                  ctaText="Explore Care Pathway"
+                  ctaLink="/counselling"
+                  motionVariants={itemVariants}
+                />
               ))}
             </motion.div>
 
@@ -719,28 +709,36 @@ export default function HomePage() {
         className="py-12"
       />
 
-      {/* 11. CLOSING INSTITUTIONAL CTA - Bidirectional Slomo */}
+      {/* 11. CLOSING INSTITUTIONAL CTA - Signature Themed Card Motif */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
           viewport={bidirectionalViewport}
-          className="p-8 sm:p-14 rounded-3xl glass-card flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 relative overflow-hidden shadow-2xl"
+          className="p-8 sm:p-14 rounded-3xl bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 relative overflow-hidden shadow-2xl shadow-black/80 group"
         >
-          <div className="max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
-              Take the Next Step
+          {/* Full-bleed signature background pattern illustration */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity group-hover:opacity-35 transition-opacity duration-700 pointer-events-none scale-105"
+            style={{ backgroundImage: `url('/assets/cards/card-book-appointment-fullspan.png')` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#06101B]/95 via-[#06101B]/85 to-[#06101B]/75 pointer-events-none" />
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-teal-500/15 rounded-full blur-[100px] pointer-events-none" />
+
+          <div className="max-w-2xl relative z-10">
+            <span className="text-xs font-bold uppercase tracking-widest text-teal-400 font-mono">
+              Take the Next Step // Confidential Guidance
             </span>
             <h2 className="text-2xl sm:text-4xl font-bold tracking-tight mt-2 mb-4 font-royal uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
               Begin an Enquiry at Your Own Pace
             </h2>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-sans">
               We provide a safe, respectful environment. No sensitive clinical disclosures in public forms—just a compassionate conversation about how we can help.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0 relative z-10">
             <Link
               to="/counselling"
               className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-gradient-to-r from-teal-500/20 via-teal-500/30 to-teal-500/20 border border-teal-400/50 hover:border-teal-300 hover:shadow-[0_0_25px_rgba(45,212,191,0.35)] transition-all duration-300 group/btn shadow-lg shadow-teal-950/40"

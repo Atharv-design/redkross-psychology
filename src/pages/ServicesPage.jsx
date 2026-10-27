@@ -226,52 +226,40 @@ export default function ServicesPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
           {steppedCareLevels.map((lvl, index) => (
-            <motion.div
+            <PsychologyThemedCard
               key={index}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative rounded-2xl p-6 bg-[#0A1826]/80 backdrop-blur-xl border border-teal-500/20 hover:border-teal-400/40 transition-all duration-300 flex flex-col justify-between group shadow-lg shadow-teal-950/20"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-semibold text-teal-400 tracking-wider">
-                    {lvl.level}
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono tracking-wider bg-teal-950/60 text-teal-300 border border-teal-500/30">
-                    {lvl.badge}
-                  </span>
-                </div>
-
-                <h3 className="text-lg font-royal font-bold uppercase tracking-tight bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
-                  {lvl.title}
-                </h3>
-
-                <p className="text-xs font-mono text-teal-300/80">
-                  {lvl.focus}
-                </p>
-
-                <p className="text-xs sm:text-sm text-slate-300/80 leading-relaxed font-sans">
-                  {lvl.desc}
-                </p>
-              </div>
-
-              <div className="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span>Format:</span>
-                <span className="text-teal-300">{lvl.format}</span>
-              </div>
-            </motion.div>
+              variant={[1, 2, 8, 3][index % 4]}
+              tagLeft={lvl.level}
+              tagRight={lvl.badge}
+              title={lvl.title}
+              description={lvl.desc}
+              bullets={[
+                `Focus: ${lvl.focus}`,
+                `Delivery: ${lvl.format}`,
+                "Evidence-informed stepped escalation"
+              ]}
+              meta1={{ icon: ShieldCheck, label: lvl.focus }}
+              meta2={{ icon: Clock, label: lvl.format }}
+              ctaText="Explore Level"
+              ctaLink="/counselling"
+              motionVariants={itemVariants}
+            />
           ))}
         </div>
       </section>
 
-      {/* Transparent Fee & Community Subsidies Section */}
+      {/* Transparent Fee & Community Subsidies Section with Signature Motif */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-16 max-w-7xl mx-auto">
-        <div className="rounded-3xl p-8 sm:p-12 bg-gradient-to-b from-[#0B1E2E]/90 to-[#07131F]/90 backdrop-blur-2xl border border-teal-500/30 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 shadow-2xl relative overflow-hidden group">
+          {/* Signature Themed Card Background Artwork */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-luminosity group-hover:opacity-30 transition-opacity duration-700 pointer-events-none scale-105"
+            style={{ backgroundImage: `url('/assets/cards/card-book-appointment-fullspan.png')` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#06101B]/95 via-[#06101B]/85 to-[#06101B]/75 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500/15 rounded-full blur-[100px] pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-4">

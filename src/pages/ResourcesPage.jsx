@@ -231,46 +231,26 @@ export default function ResourcesPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {nationalHelplines.map((hl, hidx) => (
-            <div
+            <PsychologyThemedCard
               key={hidx}
-              className="rounded-2xl p-6 bg-[#091522]/90 backdrop-blur-xl border border-teal-500/25 hover:border-teal-400/50 transition-all duration-300 flex flex-col justify-between group shadow-lg shadow-teal-950/20"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold text-teal-400">{hl.name}</span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono tracking-wider bg-teal-950/80 text-teal-300 border border-teal-500/40">
-                    {hl.badge}
-                  </span>
-                </div>
-
-                <div>
-                  <a
-                    href={hl.phoneLink}
-                    className="text-2xl sm:text-3xl font-royal font-bold uppercase tracking-tight text-white group-hover:text-teal-300 transition-colors flex items-center gap-2"
-                  >
-                    <span>{hl.number}</span>
-                    <PhoneCall className="w-5 h-5 text-teal-400 group-hover:scale-110 transition-transform" />
-                  </a>
-                  <p className="text-[11px] font-mono text-slate-400 mt-1">{hl.operator}</p>
-                </div>
-
-                <p className="text-xs sm:text-sm text-slate-300/80 leading-relaxed font-sans">
-                  {hl.details}
-                </p>
-              </div>
-
-              <div className="pt-5 mt-5 border-t border-slate-800/80">
-                <a
-                  href={hl.phoneLink}
-                  className="w-full py-2.5 rounded-xl bg-teal-500/15 hover:bg-teal-500/25 border border-teal-500/30 text-xs font-royal uppercase font-bold text-teal-200 transition-all flex items-center justify-center gap-2"
-                >
-                  <PhoneCall className="w-3.5 h-3.5" />
-                  <span>Call {hl.name} Now</span>
-                </a>
-              </div>
-            </div>
+              variant={6}
+              tagLeft={hl.name}
+              tagRight={hl.badge}
+              title={hl.number}
+              description={hl.details}
+              bullets={[
+                hl.operator,
+                "Toll-free 24/7 national mental health support",
+                "Instant, confidential emergency response"
+              ]}
+              meta1={{ icon: PhoneCall, label: hl.name }}
+              meta2={{ icon: Clock, label: "24/7 Active" }}
+              ctaText={`Call ${hl.name}`}
+              ctaLink={hl.phoneLink}
+              motionVariants={itemVariants}
+            />
           ))}
         </div>
       </section>

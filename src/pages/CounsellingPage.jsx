@@ -149,7 +149,7 @@ export default function CounsellingPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
           <PsychologyThemedCard
             variant={1}
             tagLeft="Individual Care"
@@ -225,7 +225,7 @@ export default function CounsellingPage() {
         <div className="h-[1px] bg-gradient-to-r from-transparent via-teal-500/25 to-transparent" />
       </div>
 
-      {/* 4-Step Patient Journey */}
+      {/* 4-Step Patient Journey - 2x2 Grid with Signature Themed Cards */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
           <div className="inline-flex items-center gap-2 text-teal-400 text-xs font-mono uppercase tracking-widest">
@@ -240,43 +240,41 @@ export default function CounsellingPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
           {howSupportWorks.map((step, idx) => (
-            <motion.div
+            <PsychologyThemedCard
               key={idx}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="rounded-2xl p-6 bg-[#0A1826]/80 backdrop-blur-xl border border-teal-500/20 hover:border-teal-400/40 transition-all duration-300 flex flex-col justify-between group shadow-lg shadow-teal-950/20"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="font-royal text-2xl font-bold bg-gradient-to-r from-teal-300 to-teal-100 bg-clip-text text-transparent">
-                    {step.step}
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono tracking-wider bg-teal-950/70 text-teal-300 border border-teal-500/30">
-                    {step.badge}
-                  </span>
-                </div>
-
-                <h3 className="text-base font-royal font-bold uppercase tracking-tight bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
-                  {step.title}
-                </h3>
-
-                <p className="text-xs sm:text-sm text-slate-300/80 leading-relaxed font-sans">
-                  {step.description}
-                </p>
-              </div>
-            </motion.div>
+              variant={[1, 8, 9, 10][idx % 4]}
+              tagLeft={step.badge}
+              tagRight={`Step ${step.step}`}
+              title={step.title}
+              description={step.description}
+              bullets={[
+                "Transparent communication & zero pressure",
+                "Complete data minimisation guarantee",
+                "Immediate withdrawal rights at any point"
+              ]}
+              meta1={{ icon: ShieldCheck, label: "Verified Protocol" }}
+              meta2={{ icon: Clock, label: `Phase ${step.step} of 04` }}
+              ctaText="Initiate This Step"
+              ctaLink="#intake-form"
+              motionVariants={itemVariants}
+            />
           ))}
         </div>
       </section>
 
-      {/* Confidentiality Limits Section */}
+      {/* Confidentiality Limits Section with Signature Motif */}
       <section id="boundaries" className="relative px-4 sm:px-6 lg:px-8 py-16 max-w-7xl mx-auto">
-        <div className="rounded-3xl p-8 sm:p-12 bg-gradient-to-b from-[#091522]/90 to-[#060D17]/95 backdrop-blur-2xl border border-teal-500/30 relative overflow-hidden">
-          <div className="max-w-3xl mx-auto space-y-6">
+        <div className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 relative overflow-hidden group shadow-2xl">
+          {/* Signature Motif Background */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-luminosity group-hover:opacity-25 transition-opacity duration-700 pointer-events-none scale-105"
+            style={{ backgroundImage: `url('/assets/cards/card-crisis-support-fullspan.png')` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#06101B]/95 via-[#06101B]/85 to-[#06101B]/75 pointer-events-none" />
+
+          <div className="max-w-4xl mx-auto space-y-6 relative z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-950/80 border border-teal-500/40 text-teal-300 text-xs font-mono">
               <Lock className="w-3.5 h-3.5" />
               <span>LEGAL & CLINICAL BOUNDARIES // MHCA 2017</span>
@@ -290,32 +288,41 @@ export default function CounsellingPage() {
               We protect your privacy completely. Your personal disclosures will never be shared with your family, college, or employer. However, in accordance with the <strong>Mental Healthcare Act 2017</strong> and clinical safeguarding ethics, confidentiality must be broken under three legally mandated conditions:
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-              <div className="p-4 rounded-xl bg-[#06101B]/80 border border-red-500/20">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-3">
+              <div className="p-5 rounded-2xl bg-[#06101B]/90 border border-red-500/30 hover:border-red-400/50 transition-all shadow-lg shadow-red-950/20">
                 <span className="font-mono text-xs text-red-400 font-bold block mb-1">LIMIT 01</span>
-                <h4 className="text-xs font-royal font-bold uppercase text-slate-200 mb-1">Imminent Self-Harm</h4>
-                <p className="text-xs text-slate-400 font-sans">Clear, immediate risk of life or suicide where emergency intervention is required.</p>
+                <h4 className="text-sm font-royal font-bold uppercase text-slate-100 mb-1.5">Imminent Self-Harm</h4>
+                <p className="text-xs text-slate-300/80 font-sans leading-relaxed">Clear, immediate risk of life or suicide where emergency intervention is required.</p>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#06101B]/80 border border-amber-500/20">
+              <div className="p-5 rounded-2xl bg-[#06101B]/90 border border-amber-500/30 hover:border-amber-400/50 transition-all shadow-lg shadow-amber-950/20">
                 <span className="font-mono text-xs text-amber-400 font-bold block mb-1">LIMIT 02</span>
-                <h4 className="text-xs font-royal font-bold uppercase text-slate-200 mb-1">Harm to Others</h4>
-                <p className="text-xs text-slate-400 font-sans">Credible threat of physical harm or violence directed toward another person.</p>
+                <h4 className="text-sm font-royal font-bold uppercase text-slate-100 mb-1.5">Harm to Others</h4>
+                <p className="text-xs text-slate-300/80 font-sans leading-relaxed">Credible threat of physical harm or violence directed toward another person.</p>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#06101B]/80 border border-teal-500/20">
+              <div className="p-5 rounded-2xl bg-[#06101B]/90 border border-teal-500/30 hover:border-teal-400/50 transition-all shadow-lg shadow-teal-950/20">
                 <span className="font-mono text-xs text-teal-400 font-bold block mb-1">LIMIT 03</span>
-                <h4 className="text-xs font-royal font-bold uppercase text-slate-200 mb-1">Child Protection</h4>
-                <p className="text-xs text-slate-400 font-sans">Disclosures involving child abuse or exploitation under mandatory POCSO reporting.</p>
+                <h4 className="text-sm font-royal font-bold uppercase text-slate-100 mb-1.5">Child Protection</h4>
+                <p className="text-xs text-slate-300/80 font-sans leading-relaxed">Disclosures involving child abuse or exploitation under mandatory POCSO reporting.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Interactive Intake Enquiry Form */}
+      {/* Interactive Intake Enquiry Form with Signature Motif */}
       <section id="intake-form" className="relative px-4 sm:px-6 lg:px-8 py-16 max-w-4xl mx-auto">
-        <div className="rounded-3xl p-8 sm:p-12 bg-[#0B1E2E]/90 backdrop-blur-2xl border border-teal-500/30 shadow-2xl relative">
+        <div className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 shadow-2xl relative overflow-hidden group">
+          {/* Signature Motif Background */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-luminosity group-hover:opacity-25 transition-opacity duration-700 pointer-events-none scale-105"
+            style={{ backgroundImage: `url('/assets/cards/card-individual-counselling-fullspan.png')` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#06101B]/95 via-[#06101B]/85 to-[#06101B]/75 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-teal-500/10 rounded-full blur-[80px] pointer-events-none" />
+
+          <div className="relative z-10">
           <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
             <span className="px-3 py-1 rounded-full text-xs font-mono tracking-wider bg-teal-950/80 text-teal-300 border border-teal-500/40">
               NON-CLINICAL INITIAL INTAKE
@@ -480,6 +487,7 @@ export default function CounsellingPage() {
               </button>
             </form>
           )}
+          </div>
         </div>
       </section>
     </div>

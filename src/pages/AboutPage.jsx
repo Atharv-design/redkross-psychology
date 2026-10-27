@@ -412,21 +412,29 @@ export default function AboutPage() {
             initial="hidden"
             whileInView="visible"
             viewport={bidirectionalViewport}
-            className="p-8 sm:p-12 rounded-3xl glass-card flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8"
+            className="p-8 sm:p-12 rounded-3xl bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 relative overflow-hidden shadow-2xl shadow-black/80 group"
           >
-            <div className="max-w-2xl">
-              <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
-                Take the Next Step
+            {/* Signature Themed Card Background Artwork */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity group-hover:opacity-35 transition-opacity duration-700 pointer-events-none scale-105"
+              style={{ backgroundImage: `url('/assets/cards/card-about-therapist-fullspan.png')` }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#06101B]/95 via-[#06101B]/85 to-[#06101B]/75 pointer-events-none" />
+            <div className="absolute -top-24 -right-24 w-96 h-96 bg-teal-500/15 rounded-full blur-[100px] pointer-events-none" />
+
+            <div className="max-w-2xl relative z-10">
+              <span className="text-xs font-bold uppercase tracking-widest text-teal-400 font-mono">
+                Take the Next Step // Institutional Collaboration
               </span>
               <h2 className="text-2xl sm:text-4xl font-bold font-royal uppercase tracking-tight mt-2 mb-3 bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
                 Need Support, Training, or Institutional Collaboration?
               </h2>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-sans">
                 Whether you are seeking personal support, looking to build mental health literacy in your school or workplace, or wishing to apply for our training cohorts, we are here to guide you at your own pace.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0 relative z-10">
               <Link
                 to="/counselling"
                 className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-gradient-to-r from-teal-500/20 via-teal-500/30 to-teal-500/20 border border-teal-400/50 hover:border-teal-300 hover:shadow-[0_0_25px_rgba(45,212,191,0.35)] transition-all duration-300 group/btn shadow-lg shadow-teal-950/40"

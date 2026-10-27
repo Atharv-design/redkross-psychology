@@ -264,20 +264,29 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* General Inquiry Routing Form */}
+      {/* General Inquiry Routing Form with Signature Themed Card Motif */}
       <section id="contact-form" className="relative px-4 sm:px-6 lg:px-8 py-16 max-w-4xl mx-auto">
-        <div className="rounded-3xl p-8 sm:p-12 bg-[#0B1E2E]/90 backdrop-blur-2xl border border-teal-500/30 shadow-2xl relative">
-          <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
-            <span className="px-3 py-1 rounded-full text-xs font-mono tracking-wider bg-teal-950/80 text-teal-300 border border-teal-500/40">
-              GENERAL INQUIRY DESK
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-royal font-bold uppercase tracking-tight bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
-              SEND A DIRECT MESSAGE
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-300/80 font-sans">
-              Have a question about our programmes, institutional collaborations, or research? Reach out to us below.
-            </p>
-          </div>
+        <div className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 shadow-2xl relative overflow-hidden group">
+          {/* Signature Themed Card Background Artwork */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-luminosity group-hover:opacity-25 transition-opacity duration-700 pointer-events-none scale-105"
+            style={{ backgroundImage: `url('/assets/cards/card-about-therapist-fullspan.png')` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#06101B]/95 via-[#06101B]/85 to-[#06101B]/75 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-teal-500/10 rounded-full blur-[80px] pointer-events-none" />
+
+          <div className="relative z-10">
+            <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
+              <span className="px-3 py-1 rounded-full text-xs font-mono tracking-wider bg-teal-950/80 text-teal-300 border border-teal-500/40">
+                GENERAL INQUIRY DESK
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-royal font-bold uppercase tracking-tight bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
+                SEND A DIRECT MESSAGE
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-300/80 font-sans">
+                Have a question about our programmes, institutional collaborations, or research? Reach out to us below.
+              </p>
+            </div>
 
           {submitted ? (
             <motion.div 
@@ -416,6 +425,7 @@ export default function ContactPage() {
               </button>
             </form>
           )}
+          </div>
         </div>
       </section>
     </div>
