@@ -77,7 +77,7 @@ export default function UrgentHelpStrip() {
                 >
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="font-bold text-amber-300 text-sm">{item.name}</span>
+                      <span className="font-royal font-bold text-amber-300 text-sm uppercase tracking-wide">{item.name}</span>
                       <span className="text-[9px] font-mono text-amber-400/80">{item.badge}</span>
                     </div>
                     <p className="text-[11px] text-slate-300 leading-relaxed mb-2">

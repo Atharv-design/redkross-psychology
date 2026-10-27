@@ -128,7 +128,7 @@ export default function AmbienceAudioPlayer() {
 
         {/* Minimal Calm Label with Realtime Sound Pulse */}
         <div className="flex items-center gap-2 pr-1">
-          <span className="text-[11px] font-semibold tracking-wide text-slate-200 group-hover:text-teal-300 transition-colors">
+          <span className="font-royal text-[11px] font-bold uppercase tracking-wider bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover:from-white group-hover:to-teal-200 transition-all">
             {isPlaying ? "528 Hz Healing" : "528 Hz Calm"}
           </span>
           {isPlaying && (

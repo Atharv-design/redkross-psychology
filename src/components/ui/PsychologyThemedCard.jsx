@@ -154,7 +154,7 @@ export default function PsychologyThemedCard({
         </div>
 
         {/* Title */}
-        <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight leading-snug font-royal mb-2 pr-12 drop-shadow-sm">
+        <h3 className="text-lg sm:text-xl font-bold tracking-tight leading-snug font-royal mb-2 pr-12 drop-shadow-sm bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
           {title}
         </h3>
 
@@ -210,7 +210,7 @@ export default function PsychologyThemedCard({
             href={ctaLink}
             className="mt-3.5 w-full h-11 sm:h-12 rounded-full bg-gradient-to-r from-teal-500/15 via-teal-500/20 to-teal-500/25 border border-teal-500/35 hover:border-teal-400 hover:from-teal-500/25 hover:to-teal-500/40 flex items-center justify-between px-4 sm:px-5 transition-all duration-300 group/btn shadow-lg shadow-teal-950/40"
           >
-            <span className="text-xs sm:text-sm font-semibold text-teal-200 group-hover/btn:text-white transition-colors">
+            <span className="font-royal text-xs sm:text-sm font-bold tracking-wider uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200 transition-all">
               {ctaText}
             </span>
             <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-teal-400 text-[#08121E] flex items-center justify-center font-bold shadow-md shadow-teal-400/40 group-hover/btn:translate-x-1 group-hover/btn:bg-teal-300 transition-all shrink-0">
@@ -222,7 +222,7 @@ export default function PsychologyThemedCard({
             to={ctaLink}
             className="mt-3.5 w-full h-11 sm:h-12 rounded-full bg-gradient-to-r from-teal-500/15 via-teal-500/20 to-teal-500/25 border border-teal-500/35 hover:border-teal-400 hover:from-teal-500/25 hover:to-teal-500/40 flex items-center justify-between px-4 sm:px-5 transition-all duration-300 group/btn shadow-lg shadow-teal-950/40"
           >
-            <span className="text-xs sm:text-sm font-semibold text-teal-200 group-hover/btn:text-white transition-colors">
+            <span className="font-royal text-xs sm:text-sm font-bold tracking-wider uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200 transition-all">
               {ctaText}
             </span>
             <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-teal-400 text-[#08121E] flex items-center justify-center font-bold shadow-md shadow-teal-400/40 group-hover/btn:translate-x-1 group-hover/btn:bg-teal-300 transition-all shrink-0">

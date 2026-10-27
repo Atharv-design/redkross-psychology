@@ -17,7 +17,7 @@ export default function PagePlaceholder({ title, category, description, primaryA
           <span>{category || "REDKROSS PSYCHOLOGY SECTION"}</span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">
+        <h1 className="text-3xl sm:text-5xl font-bold font-royal uppercase tracking-tight mb-4 bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
           {title}
         </h1>
 
@@ -28,18 +28,18 @@ export default function PagePlaceholder({ title, category, description, primaryA
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl glass-button-secondary text-xs font-mono transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#081524]/80 backdrop-blur-xl border border-teal-500/30 hover:border-teal-400 text-xs transition-all group/btn shadow-md"
           >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to Psychology Home</span>
+            <ArrowLeft className="w-3.5 h-3.5 text-teal-400 group-hover/btn:-translate-x-0.5 transition-transform" />
+            <span className="font-royal font-bold uppercase tracking-wider bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200">Back to Psychology Home</span>
           </Link>
 
           {primaryAction && (
             <Link
               to={primaryAction.href}
-              className="px-5 py-2.5 rounded-xl glass-button-primary text-slate-950 text-xs font-bold uppercase tracking-wider transition-all"
+              className="px-6 py-3 rounded-full bg-gradient-to-r from-teal-500/20 via-teal-500/30 to-teal-500/20 border border-teal-400/50 hover:border-teal-300 text-xs transition-all shadow-md group/btn"
             >
-              {primaryAction.label}
+              <span className="font-royal font-bold uppercase tracking-wider bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200">{primaryAction.label}</span>
             </Link>
           )}
         </div>

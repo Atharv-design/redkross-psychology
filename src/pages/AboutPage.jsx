@@ -94,7 +94,7 @@ export default function AboutPage() {
               <span>Organisational Origin &amp; Ethical Governance</span>
             </div>
             
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-royal uppercase tracking-tight mb-6 leading-tight bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
               About RedKross Psychology
             </h1>
             
@@ -121,7 +121,7 @@ export default function AboutPage() {
               <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
                 Our Provenance
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+              <h2 className="text-2xl sm:text-4xl font-bold font-royal uppercase tracking-tight leading-snug bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
                 {about.origin.headline}
               </h2>
               
@@ -234,7 +234,7 @@ export default function AboutPage() {
             <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
               Ethical Code
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2 mb-4">
+            <h2 className="text-2xl sm:text-4xl font-bold font-royal uppercase tracking-tight mt-2 mb-4 bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
               Core Values &amp; Non-Negotiable Standards
             </h2>
             <p className="text-slate-300 leading-relaxed">
@@ -281,7 +281,7 @@ export default function AboutPage() {
             <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
               Clinical Integrity
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2 mb-4">
+            <h2 className="text-2xl sm:text-4xl font-bold font-royal uppercase tracking-tight mt-2 mb-4 bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
               {about.governance.headline}
             </h2>
             <p className="text-slate-300 leading-relaxed">
@@ -319,7 +319,7 @@ export default function AboutPage() {
           <div className="p-6 rounded-2xl bg-amber-500/10 backdrop-blur-md border border-amber-500/25 flex items-start gap-4">
             <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
             <div className="text-sm">
-              <h4 className="font-semibold text-amber-300 mb-1">
+              <h4 className="font-royal font-bold uppercase tracking-wider text-amber-300 mb-1">
                 Practitioner Credential Transparency Policy
               </h4>
               <p className="text-amber-200/90 text-xs sm:text-sm leading-relaxed">
@@ -343,7 +343,7 @@ export default function AboutPage() {
             <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
               Ecosystem Architecture
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2 mb-4">
+            <h2 className="text-2xl sm:text-4xl font-bold font-royal uppercase tracking-tight mt-2 mb-4 bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
               How RedKross Operates Across Disciplines
             </h2>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
@@ -418,7 +418,7 @@ export default function AboutPage() {
               <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
                 Take the Next Step
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2 mb-3">
+              <h2 className="text-2xl sm:text-4xl font-bold font-royal uppercase tracking-tight mt-2 mb-3 bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
                 Need Support, Training, or Institutional Collaboration?
               </h2>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
@@ -429,22 +429,24 @@ export default function AboutPage() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
               <Link
                 to="/counselling"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl glass-button-primary text-slate-950 font-semibold text-sm"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-gradient-to-r from-teal-500/20 via-teal-500/30 to-teal-500/20 border border-teal-400/50 hover:border-teal-300 hover:shadow-[0_0_25px_rgba(45,212,191,0.35)] transition-all duration-300 group/btn shadow-lg shadow-teal-950/40"
               >
-                <span>Explore Counselling</span>
-                <ArrowRight className="w-4 h-4" />
+                <span className="font-royal font-bold uppercase tracking-wider text-xs sm:text-sm bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200">Explore Counselling</span>
+                <div className="w-6 h-6 rounded-full bg-teal-400 text-[#08121E] flex items-center justify-center font-bold shadow-md shadow-teal-400/40 group-hover/btn:translate-x-1 group-hover/btn:bg-teal-300 transition-all shrink-0">
+                  <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                </div>
               </Link>
               <Link
                 to="/workshops"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl glass-button-secondary text-slate-200 font-semibold text-sm"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#081524]/80 backdrop-blur-xl border border-teal-500/30 hover:border-teal-400 transition-all duration-300 group/btn shadow-md"
               >
-                <span>Browse Workshops</span>
+                <span className="font-royal font-bold uppercase tracking-wider text-xs sm:text-sm bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200">Browse Workshops</span>
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl glass-button-secondary text-slate-200 font-semibold text-sm"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#081524]/80 backdrop-blur-xl border border-teal-500/30 hover:border-teal-400 transition-all duration-300 group/btn shadow-md"
               >
-                <span>Contact Desk</span>
+                <span className="font-royal font-bold uppercase tracking-wider text-xs sm:text-sm bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200">Contact Desk</span>
               </Link>
             </div>
           </motion.div>

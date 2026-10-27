@@ -65,8 +65,8 @@ export default function PsychologyNavbar() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-royal font-bold text-sm tracking-wider text-white leading-tight">
-                RedKross <span className="text-[#2dd4bf]">Psychology</span>
+              <span className="font-royal font-bold text-sm tracking-wider leading-tight uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
+                RedKross Psychology
               </span>
               <span className="text-[9px] font-mono tracking-widest text-teal-400/80 uppercase -mt-0.5">
                 Mental Wellbeing &bull; Foundation
@@ -99,13 +99,10 @@ export default function PsychologyNavbar() {
           <div className="hidden lg:flex items-center gap-3">
             <Link
               to="/counselling"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-slate-950 text-xs font-royal font-bold tracking-wider shadow-[0_0_20px_rgba(45,212,191,0.35)] hover:scale-105 transition-all cursor-pointer uppercase"
-              style={{
-                background: 'linear-gradient(135deg, #2dd4bf, #14b8a6)'
-              }}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-teal-500/20 via-teal-500/30 to-teal-500/20 border border-teal-400/50 hover:border-teal-300 shadow-[0_0_20px_rgba(45,212,191,0.35)] hover:scale-105 transition-all cursor-pointer uppercase group/navbtn"
             >
-              <span>Enquire For Support</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <span className="font-royal text-xs font-bold tracking-wider bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/navbtn:from-white group-hover/navbtn:to-teal-200">Enquire For Support</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-teal-300 group-hover/navbtn:text-white" />
             </Link>
           </div>
 
@@ -145,13 +142,10 @@ export default function PsychologyNavbar() {
                 <Link
                   to="/counselling"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-slate-950 font-royal font-bold text-xs uppercase"
-                  style={{
-                    background: 'linear-gradient(135deg, #2dd4bf, #14b8a6)'
-                  }}
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-teal-500/20 via-teal-500/30 to-teal-500/20 border border-teal-400/50 hover:border-teal-300 text-xs font-royal font-bold uppercase tracking-wider group/mobbtn"
                 >
-                  <span>Enquire For Support</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+                  <span className="bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/mobbtn:from-white group-hover/mobbtn:to-teal-200">Enquire For Support</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-teal-300 group-hover/mobbtn:text-white" />
                 </Link>
 
                 <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 pt-2 border-t border-white/5">

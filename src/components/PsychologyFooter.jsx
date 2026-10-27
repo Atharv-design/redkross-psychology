@@ -61,7 +61,7 @@ export default function PsychologyFooter() {
 
           {/* Col 3: Programmes & Care */}
           <div>
-            <h4 className="text-xs font-mono font-bold text-teal-300 uppercase tracking-wider mb-4">
+            <h4 className="text-xs font-royal font-bold uppercase tracking-wider mb-4 bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
               Support &amp; Programmes
             </h4>
             <ul className="space-y-2.5 text-xs">
@@ -76,7 +76,7 @@ export default function PsychologyFooter() {
 
           {/* Col 4: Learning & Institutions */}
           <div>
-            <h4 className="text-xs font-mono font-bold text-teal-300 uppercase tracking-wider mb-4">
+            <h4 className="text-xs font-royal font-bold uppercase tracking-wider mb-4 bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
               Learning &amp; Training
             </h4>
             <ul className="space-y-2.5 text-xs">
@@ -91,7 +91,7 @@ export default function PsychologyFooter() {
 
           {/* Col 5: Sister Wings & Cross-Links */}
           <div>
-            <h4 className="text-xs font-mono font-bold text-teal-300 uppercase tracking-wider mb-4">
+            <h4 className="text-xs font-royal font-bold uppercase tracking-wider mb-4 bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
               RedKross Ecosystem
             </h4>
             <ul className="space-y-2.5 text-xs">
@@ -137,6 +137,7 @@ export default function PsychologyFooter() {
             showBar={false}
             wordmark="REDKROSS"
             subWordmark="PSYCHOLOGY"
+            fontFamily="'Cinzel', serif"
             wordmarkColorMode="logo"
             tagline="Empathetic Listening, Stigma-Free Support, Ethical Governance & Community Psychological Literacy"
             height="520px"

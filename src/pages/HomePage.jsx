@@ -149,9 +149,9 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 28, filter: 'blur(6px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: 1.15, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl sm:text-6xl font-black text-white tracking-tight leading-[1.14] mb-6"
+            className="text-4xl sm:text-6xl font-bold font-royal uppercase tracking-tight leading-[1.18] mb-6 bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent"
           >
-            Your mind deserves care, <span className="text-[#2dd4bf] drop-shadow-[0_0_25px_rgba(45,212,191,0.4)]">understanding</span> and support.
+            Your mind deserves care, understanding and support.
           </motion.h1>
 
           {/* Canonical Subtitle from Spec */}
@@ -173,24 +173,26 @@ export default function HomePage() {
           >
             <Link
               to="/counselling"
-              className="px-6 py-3.5 rounded-xl glass-button-primary text-slate-950 flex items-center gap-2"
+              className="px-6 py-3.5 rounded-full bg-gradient-to-r from-teal-500/20 via-teal-500/30 to-teal-500/20 border border-teal-400/50 hover:border-teal-300 hover:shadow-[0_0_25px_rgba(45,212,191,0.35)] flex items-center gap-2.5 transition-all duration-300 group/btn shadow-lg shadow-teal-950/40"
             >
-              <span>Explore Counselling</span>
-              <ArrowRight className="w-4 h-4" />
+              <span className="font-royal font-bold uppercase tracking-wider bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200">Explore Counselling</span>
+              <div className="w-6 h-6 rounded-full bg-teal-400 text-[#08121E] flex items-center justify-center font-bold shadow-md shadow-teal-400/40 group-hover/btn:translate-x-1 group-hover/btn:bg-teal-300 transition-all shrink-0">
+                <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+              </div>
             </Link>
 
             <Link
               to="/services"
-              className="px-6 py-3.5 rounded-xl glass-button-secondary flex items-center gap-2"
+              className="px-6 py-3.5 rounded-full bg-[#081524]/80 backdrop-blur-xl border border-teal-500/30 hover:border-teal-400 flex items-center gap-2 transition-all duration-300 group/btn shadow-md shadow-black/40"
             >
-              <span>Explore Services</span>
+              <span className="font-royal font-bold uppercase tracking-wider bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200">Explore Services</span>
             </Link>
 
             <Link
               to="/workshops"
-              className="px-6 py-3.5 rounded-xl glass-button-secondary text-slate-300 flex items-center gap-2"
+              className="px-6 py-3.5 rounded-full bg-[#081524]/80 backdrop-blur-xl border border-teal-500/30 hover:border-teal-400 flex items-center gap-2 transition-all duration-300 group/btn shadow-md shadow-black/40"
             >
-              <span>Bring a Workshop to Your Institution</span>
+              <span className="font-royal font-bold uppercase tracking-wider bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200">Bring a Workshop to Your Institution</span>
             </Link>
           </motion.div>
 
@@ -229,7 +231,7 @@ export default function HomePage() {
           <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
             Navigation Pathways
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2 mb-3">
+          <h2 className="text-2xl sm:text-4xl font-bold tracking-tight mt-2 mb-3 font-royal uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
             Choose Your Journey
           </h2>
           <p className="text-slate-300 text-sm leading-relaxed">
@@ -276,7 +278,7 @@ export default function HomePage() {
             <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
               Verified Offerings
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2 mb-3">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight mt-2 mb-3 font-royal uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
               The Six Core Programmes
             </h2>
             <p className="text-slate-300 text-sm leading-relaxed">
@@ -285,10 +287,10 @@ export default function HomePage() {
           </div>
           <Link
             to="/services"
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold text-teal-400 hover:text-teal-300 transition-colors shrink-0"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-500/10 border border-teal-500/30 hover:border-teal-400 transition-all duration-300 group/btn shrink-0 shadow-sm"
           >
-            <span>View Complete Inventory</span>
-            <ArrowRight className="w-4 h-4" />
+            <span className="font-royal text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200">View Complete Inventory</span>
+            <ArrowRight className="w-4 h-4 text-teal-400 group-hover/btn:translate-x-0.5 transition-transform" />
           </Link>
         </motion.div>
 
@@ -369,7 +371,7 @@ export default function HomePage() {
               viewport={bidirectionalViewport}
               className="max-w-3xl mb-12"
             >
-              <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight leading-tight font-royal mb-3">
+              <h2 className="text-2xl sm:text-4xl font-bold tracking-tight leading-tight font-royal mb-3 uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
                 How Support Works: Our 4-Step Journey
               </h2>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
@@ -405,7 +407,7 @@ export default function HomePage() {
                   </div>
 
                   {/* Step Title */}
-                  <h3 className="text-base sm:text-lg font-bold text-white mb-2.5 leading-snug font-royal group-hover/step:text-teal-200 transition-colors">
+                  <h3 className="text-base sm:text-lg font-bold mb-2.5 leading-snug font-royal uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/step:opacity-90 transition-opacity">
                     {step.title}
                   </h3>
 
@@ -432,9 +434,9 @@ export default function HomePage() {
 
               <Link
                 to="/counselling"
-                className="h-11 sm:h-12 px-6 rounded-full bg-gradient-to-r from-teal-500/20 via-teal-500/25 to-teal-500/30 border border-teal-500/40 hover:border-teal-300 hover:from-teal-500/35 hover:to-teal-500/50 flex items-center justify-between gap-4 transition-all duration-300 group/btn shadow-lg shadow-teal-950/50 text-xs sm:text-sm font-semibold text-teal-200 hover:text-white shrink-0"
+                className="h-11 sm:h-12 px-6 rounded-full bg-gradient-to-r from-teal-500/20 via-teal-500/25 to-teal-500/30 border border-teal-500/40 hover:border-teal-300 hover:from-teal-500/35 hover:to-teal-500/50 flex items-center justify-between gap-4 transition-all duration-300 group/btn shadow-lg shadow-teal-950/50 text-xs sm:text-sm font-semibold shrink-0"
               >
-                <span>Initiate Confidential Enquiry</span>
+                <span className="font-royal font-bold uppercase tracking-wider bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200">Initiate Confidential Enquiry</span>
                 <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-teal-400 text-[#08121E] flex items-center justify-center font-bold shadow-md shadow-teal-400/40 group-hover/btn:translate-x-1 group-hover/btn:bg-teal-300 transition-all shrink-0">
                   <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
                 </div>
@@ -457,7 +459,7 @@ export default function HomePage() {
             <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
               Fair &amp; Transparent Care
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight leading-snug font-royal uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
               {accessAndAffordability.headline}
             </h2>
             <p className="text-slate-300 text-sm leading-relaxed">
@@ -466,10 +468,10 @@ export default function HomePage() {
             <div className="pt-2">
               <Link
                 to="/counselling"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl glass-button-primary text-slate-950 text-xs font-bold uppercase tracking-wider"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-teal-500/20 via-teal-500/25 to-teal-500/30 border border-teal-500/40 hover:border-teal-300 transition-all duration-300 group/btn shadow-md"
               >
-                <span>Read Counselling Fee Details</span>
-                <ArrowRight className="w-4 h-4" />
+                <span className="font-royal text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200">Read Counselling Fee Details</span>
+                <ArrowRight className="w-4 h-4 text-teal-400 group-hover/btn:translate-x-0.5 transition-transform" />
               </Link>
             </div>
           </motion.div>
@@ -513,7 +515,7 @@ export default function HomePage() {
             <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
               Responsible Academics
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2 mb-3">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight mt-2 mb-3 font-royal uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
               Supervised Psychology Internship Tracks
             </h2>
             <p className="text-slate-300 text-sm leading-relaxed">
@@ -522,10 +524,10 @@ export default function HomePage() {
           </div>
           <Link
             to="/internship"
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold text-teal-400 hover:text-teal-300 transition-colors shrink-0"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-500/10 border border-teal-500/30 hover:border-teal-400 transition-all duration-300 group/btn shrink-0 shadow-sm"
           >
-            <span>Track Application Details</span>
-            <ArrowRight className="w-4 h-4" />
+            <span className="font-royal text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200">Track Application Details</span>
+            <ArrowRight className="w-4 h-4 text-teal-400 group-hover/btn:translate-x-0.5 transition-transform" />
           </Link>
         </motion.div>
 
@@ -571,7 +573,7 @@ export default function HomePage() {
             <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
               Institutional Delivery
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2 mb-3">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight mt-2 mb-3 font-royal uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
               Workshops for Schools, Colleges &amp; Workplaces
             </h2>
             <p className="text-slate-300 text-sm leading-relaxed">
@@ -580,10 +582,10 @@ export default function HomePage() {
           </div>
           <Link
             to="/workshops"
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold text-teal-400 hover:text-teal-300 transition-colors shrink-0"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-500/10 border border-teal-500/30 hover:border-teal-400 transition-all duration-300 group/btn shrink-0 shadow-sm"
           >
-            <span>View All Modules</span>
-            <ArrowRight className="w-4 h-4" />
+            <span className="font-royal text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200">View All Modules</span>
+            <ArrowRight className="w-4 h-4 text-teal-400 group-hover/btn:translate-x-0.5 transition-transform" />
           </Link>
         </motion.div>
 
@@ -628,7 +630,7 @@ export default function HomePage() {
           <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
             Grassroots Outreach
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2 mb-3">
+          <h2 className="text-2xl sm:text-4xl font-bold tracking-tight mt-2 mb-3 font-royal uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
             Community Activities &amp; Awareness
           </h2>
           <p className="text-slate-300 text-sm leading-relaxed">
@@ -674,7 +676,7 @@ export default function HomePage() {
             <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
               Institutional Governance
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2 mb-3">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight mt-2 mb-3 font-royal uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
               {trustAndSafety.title}
             </h2>
             <p className="text-slate-300 text-sm leading-relaxed">
@@ -730,7 +732,7 @@ export default function HomePage() {
             <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
               Take the Next Step
             </span>
-            <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-2 mb-4">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight mt-2 mb-4 font-royal uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
               Begin an Enquiry at Your Own Pace
             </h2>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
@@ -741,16 +743,18 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
             <Link
               to="/counselling"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl glass-button-primary text-slate-950 font-bold text-xs uppercase tracking-wider transition-all"
+              className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-gradient-to-r from-teal-500/20 via-teal-500/30 to-teal-500/20 border border-teal-400/50 hover:border-teal-300 hover:shadow-[0_0_25px_rgba(45,212,191,0.35)] transition-all duration-300 group/btn shadow-lg shadow-teal-950/40"
             >
-              <span>Enquire for Counselling</span>
-              <ArrowRight className="w-4 h-4" />
+              <span className="font-royal font-bold uppercase tracking-wider text-xs sm:text-sm bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200">Enquire for Counselling</span>
+              <div className="w-6 h-6 rounded-full bg-teal-400 text-[#08121E] flex items-center justify-center font-bold shadow-md shadow-teal-400/40 group-hover/btn:translate-x-1 group-hover/btn:bg-teal-300 transition-all shrink-0">
+                <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+              </div>
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl glass-button-secondary text-slate-200 font-bold text-xs uppercase tracking-wider transition-all"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#081524]/80 backdrop-blur-xl border border-teal-500/30 hover:border-teal-400 transition-all duration-300 group/btn shadow-md"
             >
-              <span>Contact Coordinator</span>
+              <span className="font-royal font-bold uppercase tracking-wider text-xs sm:text-sm bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover/btn:from-white group-hover/btn:to-teal-200">Contact Coordinator</span>
             </Link>
           </div>
         </motion.div>

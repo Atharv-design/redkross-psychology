@@ -36,7 +36,7 @@ const AccordionTrigger = React.forwardRef<
       )}
       {...props}
     >
-      <span className="text-base sm:text-lg font-semibold tracking-tight text-slate-100 group-hover:text-teal-300 transition-colors pr-4">
+      <span className="font-royal text-base sm:text-lg font-bold tracking-tight text-slate-100 group-hover:text-teal-200 transition-colors pr-4">
         {children}
       </span>
       <div className="h-9 w-9 rounded-full bg-teal-500/10 border border-teal-500/25 flex items-center justify-center shrink-0 group-hover:bg-teal-500/20 group-hover:border-teal-400/50 transition-all">
