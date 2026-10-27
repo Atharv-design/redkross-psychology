@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import UrgentHelpStrip from './components/UrgentHelpStrip';
 import PsychologyNavbar from './components/PsychologyNavbar';
 import PsychologyFooter from './components/PsychologyFooter';
 import PsychologyBackgroundWatermark from './components/PsychologyBackgroundWatermark';
@@ -30,14 +29,11 @@ export default function App() {
       {/* 2. Soft Rain & Forest Ambience Sound Controller */}
       <AmbienceAudioPlayer />
 
-      {/* 3. Mandatory Top Urgent-Help Crisis Strip (Tele-MANAS & KIRAN) */}
-      <UrgentHelpStrip />
-
-      {/* 4. Responsive Calming Navigation (Glassmorphic) */}
+      {/* 3. Floating Glassmorphic Pill Navbar (with Top Crisis Strip) */}
       <PsychologyNavbar />
 
-      {/* 5. Main Routed View */}
-      <main className="flex-1 relative z-10">
+      {/* 4. Main Routed View with Safe Offset */}
+      <main className="flex-1 relative z-10 pt-28 sm:pt-32">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
