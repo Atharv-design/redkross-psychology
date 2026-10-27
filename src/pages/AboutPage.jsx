@@ -20,6 +20,7 @@ import {
   GraduationCap
 } from 'lucide-react';
 import { PSYCHOLOGY_DATA } from '../data/psychologyData';
+import PsychologyThemedCard from '@/components/ui/PsychologyThemedCard';
 
 // Bidirectional Slow-Motion Animation System
 const containerVariants = {
@@ -169,25 +170,31 @@ export default function AboutPage() {
               viewport={bidirectionalViewport}
               className="lg:col-span-5 space-y-6"
             >
-              <motion.div variants={itemVariants} className="p-8 rounded-2xl glass-card glass-card-hover border-teal-500/30">
-                <div className="w-10 h-10 rounded-xl bg-teal-500/15 text-teal-300 flex items-center justify-center mb-5">
-                  <Compass className="w-5 h-5" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">Our Mission</h3>
-                <p className="text-slate-300 leading-relaxed text-base">
-                  {about.mission}
-                </p>
-              </motion.div>
+              <PsychologyThemedCard
+                variant={4}
+                tagLeft="Core Direction"
+                tagRight="Established"
+                title="Our Mission"
+                description={about.mission}
+                meta1={{ icon: Compass, label: "Compassionate De-Stigmatisation" }}
+                meta2={{ icon: Users, label: "Equitable Community Care" }}
+                ctaText="Read Clinical Values"
+                ctaLink="#values"
+                motionVariants={itemVariants}
+              />
 
-              <motion.div variants={itemVariants} className="p-8 rounded-2xl glass-card glass-card-hover">
-                <div className="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-300 flex items-center justify-center mb-5">
-                  <Sparkles className="w-5 h-5" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">Our Vision</h3>
-                <p className="text-slate-300 leading-relaxed text-base">
-                  {about.vision}
-                </p>
-              </motion.div>
+              <PsychologyThemedCard
+                variant={5}
+                tagLeft="Future Aspiration"
+                tagRight="Horizon 2030"
+                title="Our Vision"
+                description={about.vision}
+                meta1={{ icon: Sparkles, label: "Holistic Mental Literacy" }}
+                meta2={{ icon: ShieldCheck, label: "Highest Ethical Standards" }}
+                ctaText="Explore Governance"
+                ctaLink="#governance"
+                motionVariants={itemVariants}
+              />
 
               {/* Ecosystem Cross-Link */}
               <motion.div variants={itemVariants} className="p-6 rounded-2xl glass-card flex items-start gap-4">
@@ -241,28 +248,20 @@ export default function AboutPage() {
             viewport={bidirectionalViewport}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {about.values.map((val) => (
-              <motion.div 
+            {about.values.map((val, idx) => (
+              <PsychologyThemedCard
                 key={val.id}
-                variants={itemVariants}
-                className="p-7 rounded-2xl glass-card glass-card-hover flex flex-col justify-between"
-              >
-                <div>
-                  <div className="inline-block px-2.5 py-1 rounded glass-pill text-xs font-mono font-medium mb-4">
-                    {val.principle}
-                  </div>
-                  <h3 className="text-lg font-bold text-white mb-3">
-                    {val.name}
-                  </h3>
-                  <p className="text-sm text-slate-300 leading-relaxed">
-                    {val.description}
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-teal-500/15 flex items-center gap-2 text-xs text-teal-400">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-teal-400 shrink-0" />
-                  <span>Enforced Across All Programmes</span>
-                </div>
-              </motion.div>
+                variant={[1, 2, 6, 7, 8, 9][idx % 6]}
+                tagLeft={val.principle}
+                tagRight={`Value 0${idx + 1}`}
+                title={val.name}
+                description={val.description}
+                meta1={{ icon: CheckCircle2, label: "Enforced Across All Programmes" }}
+                meta2={{ icon: ShieldCheck, label: "Code of Ethics Compliance" }}
+                ctaText="Read Ethical Scope"
+                ctaLink="#governance"
+                motionVariants={itemVariants}
+              />
             ))}
           </motion.div>
         </div>
@@ -298,45 +297,20 @@ export default function AboutPage() {
             className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12"
           >
             {about.governance.roles.map((item, idx) => (
-              <motion.div 
+              <PsychologyThemedCard
                 key={idx}
-                variants={itemVariants}
-                className="p-7 rounded-2xl glass-card glass-card-hover flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-300 flex items-center justify-center font-bold text-xs">
-                      {idx === 0 && <UserCheck className="w-4 h-4" />}
-                      {idx === 1 && <ShieldCheck className="w-4 h-4" />}
-                      {idx === 2 && <Stethoscope className="w-4 h-4" />}
-                      {idx === 3 && <GraduationCap className="w-4 h-4" />}
-                    </div>
-                    <h3 className="text-lg font-bold text-white">
-                      {item.role}
-                    </h3>
-                  </div>
-
-                  <div className="space-y-3 text-sm">
-                    <div>
-                      <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-1">
-                        Scope of Practice &amp; Responsibilities
-                      </span>
-                      <p className="text-slate-300 leading-relaxed">
-                        {item.scope}
-                      </p>
-                    </div>
-
-                    <div className="pt-3 border-t border-teal-500/15">
-                      <span className="text-xs font-semibold text-teal-400 uppercase tracking-wider block mb-1">
-                        Verified Credentials &amp; Supervision
-                      </span>
-                      <p className="text-slate-400 text-xs leading-relaxed">
-                        {item.credentials}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+                variant={[1, 3, 9, 7][idx % 4]}
+                tagLeft={idx === 0 ? "Tier 1: Talk Therapy" : idx === 1 ? "Tier 2: RCI Clinical" : idx === 2 ? "Tier 3: Medical / MD" : "Tier 4: Supervised"}
+                tagRight={`Role 0${idx + 1}`}
+                title={item.role}
+                description={item.scope}
+                bullets={[`Credentials: ${item.credentials}`]}
+                meta1={{ icon: idx === 0 ? UserCheck : idx === 1 ? ShieldCheck : idx === 2 ? Stethoscope : GraduationCap, label: item.credentials }}
+                meta2={{ icon: ShieldCheck, label: "Strict Supervision Boundary" }}
+                ctaText="View Clinical Framework"
+                ctaLink="/counselling"
+                motionVariants={itemVariants}
+              />
             ))}
           </motion.div>
 
@@ -384,91 +358,47 @@ export default function AboutPage() {
             className="grid grid-cols-1 md:grid-cols-3 gap-6"
           >
             {/* 1. Parent Foundation */}
-            <motion.div 
-              variants={itemVariants}
-              className="p-7 rounded-2xl glass-card glass-card-hover flex flex-col justify-between"
-            >
-              <div>
-                <div className="text-xs font-mono text-teal-400 uppercase tracking-wider mb-2">
-                  Parent Non-Profit Entity
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">
-                  RedKross Foundation
-                </h3>
-                <p className="text-xs font-mono text-slate-400 mb-4">
-                  redkross.org.in
-                </p>
-                <p className="text-sm text-slate-300 leading-relaxed mb-6">
-                  Section 8 non-profit institutional home. Manages overall corporate governance, institutional compliance, research ethics committees, and multi-stakeholder partnerships.
-                </p>
-              </div>
-              <a
-                href={identity.parentOrg.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl glass-button-secondary text-slate-200 text-xs font-semibold"
-              >
-                <span>Visit Main Foundation</span>
-                <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
-              </a>
-            </motion.div>
+            <PsychologyThemedCard
+              variant={4}
+              tagLeft="Parent Non-Profit Entity"
+              tagRight="redkross.org.in"
+              title="RedKross Foundation"
+              description="Section 8 non-profit institutional home. Manages overall corporate governance, institutional compliance, research ethics committees, and multi-stakeholder partnerships."
+              meta1={{ icon: Building2, label: "Corporate Governance & Compliance" }}
+              meta2={{ icon: FileText, label: "Registered Non-Profit Section 8" }}
+              ctaText="Visit Main Foundation"
+              ctaLink={identity.parentOrg.url}
+              motionVariants={itemVariants}
+            />
 
             {/* 2. Psychology Subdomain (Current) */}
-            <motion.div 
-              variants={itemVariants}
-              className="p-7 rounded-2xl glass-card relative flex flex-col justify-between border-2 border-teal-400/50 shadow-2xl shadow-teal-950/40"
-            >
-              <div className="absolute -top-3 right-6 px-3 py-0.5 rounded-full bg-teal-400 text-slate-950 text-[10px] font-bold tracking-wider uppercase shadow-md shadow-teal-400/30">
-                Current Platform
-              </div>
-              <div>
-                <div className="text-xs font-mono text-teal-400 uppercase tracking-wider mb-2">
-                  Mental-Wellbeing Division
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">
-                  RedKross Psychology
-                </h3>
-                <p className="text-xs font-mono text-slate-400 mb-4">
-                  psychology.redkross.org.in
-                </p>
-                <p className="text-sm text-slate-300 leading-relaxed mb-6">
-                  Accessible counselling enquiries, facilitated support groups, institutional workshops, Psychological First Aid (PFA) training, and community mental health literacy.
-                </p>
-              </div>
-              <div className="w-full px-4 py-2.5 rounded-xl glass-pill text-xs font-semibold text-center">
-                You are currently on this platform
-              </div>
-            </motion.div>
+            <PsychologyThemedCard
+              variant={10}
+              tagLeft="Mental Wellbeing Division"
+              tagRight="Current Platform"
+              title="RedKross Psychology"
+              description="Accessible counselling enquiries, facilitated support groups, institutional workshops, Psychological First Aid (PFA) training, and community mental health literacy."
+              meta1={{ icon: Heart, label: "Clinical & Community Services" }}
+              meta2={{ icon: Users, label: "Active Platform Session" }}
+              ctaText="Explore Care Inventory"
+              ctaLink="/programmes"
+              motionVariants={itemVariants}
+              className="border-2 border-teal-400/50 shadow-2xl shadow-teal-950/40"
+            />
 
             {/* 3. Cybersecurity Subdomain */}
-            <motion.div 
-              variants={itemVariants}
-              className="p-7 rounded-2xl glass-card glass-card-hover flex flex-col justify-between"
-            >
-              <div>
-                <div className="text-xs font-mono text-teal-400 uppercase tracking-wider mb-2">
-                  Technical Security Division
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">
-                  RedKross Cybersecurity
-                </h3>
-                <p className="text-xs font-mono text-slate-400 mb-4">
-                  cyber.redkross.org.in
-                </p>
-                <p className="text-sm text-slate-300 leading-relaxed mb-6">
-                  Technical security research, open-source penetration testing tools, red-teaming frameworks, vulnerability advisories, and cybersecurity training laboratories.
-                </p>
-              </div>
-              <a
-                href={identity.cyberSubdomain.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl glass-button-secondary text-slate-200 text-xs font-semibold"
-              >
-                <span>Visit Cybersecurity Wing</span>
-                <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
-              </a>
-            </motion.div>
+            <PsychologyThemedCard
+              variant={8}
+              tagLeft="Technical Security Division"
+              tagRight="cyber.redkross.org.in"
+              title="RedKross Cybersecurity"
+              description="Technical security research, open-source penetration testing tools, red-teaming frameworks, vulnerability advisories, and cybersecurity training laboratories."
+              meta1={{ icon: ShieldCheck, label: "Securing Digital Infrastructure" }}
+              meta2={{ icon: Monitor, label: "Red-Teaming & Research" }}
+              ctaText="Visit Cybersecurity Wing"
+              ctaLink={identity.cyberSubdomain.url}
+              motionVariants={itemVariants}
+            />
           </motion.div>
         </div>
       </section>

@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { PSYCHOLOGY_DATA } from '../data/psychologyData';
 import FrequentlyAskedQuestions from '@/components/ui/frequently-asked-questions-with-accordion';
+import PsychologyThemedCard from '@/components/ui/PsychologyThemedCard';
 
 // Bidirectional Slow-Motion Animation System
 // once: false ensures smooth re-triggering whenever scrolling up or down
@@ -234,38 +235,21 @@ export default function HomePage() {
           viewport={bidirectionalViewport}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {paths.map((p, idx) => {
-            const Icon = p.icon;
-            return (
-              <motion.div 
-                key={idx}
-                variants={itemVariants}
-                className="p-7 rounded-2xl glass-card glass-card-hover flex flex-col justify-between"
-              >
-                <div>
-                  <div className="w-12 h-12 rounded-xl bg-teal-500/10 backdrop-blur-md border border-teal-500/25 flex items-center justify-center text-teal-300 mb-6">
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <span className="text-[10px] font-mono font-bold tracking-wider uppercase text-teal-400/90 block mb-2">
-                    {p.badge}
-                  </span>
-                  <h3 className="text-lg font-bold text-white mb-3 leading-snug">
-                    {p.title}
-                  </h3>
-                  <p className="text-xs text-slate-300 leading-relaxed mb-6">
-                    {p.desc}
-                  </p>
-                </div>
-                <Link
-                  to={p.href}
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-teal-400 hover:text-teal-300 transition-colors pt-2 border-t border-teal-500/15"
-                >
-                  <span>{p.linkText}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </motion.div>
-            );
-          })}
+          {paths.map((p, idx) => (
+            <PsychologyThemedCard
+              key={idx}
+              variant={[1, 4, 8, 10][idx % 4]}
+              tagLeft={p.badge}
+              tagRight={`Pathway 0${idx + 1}`}
+              title={p.title}
+              description={p.desc}
+              meta1={{ icon: Users, label: "Individual & Cohorts" }}
+              meta2={{ icon: Monitor, label: "Online & In-Person" }}
+              ctaText={p.linkText}
+              ctaLink={p.href}
+              motionVariants={itemVariants}
+            />
+          ))}
         </motion.div>
       </section>
 
@@ -305,49 +289,20 @@ export default function HomePage() {
           viewport={bidirectionalViewport}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {programmes.map((prog) => (
-            <motion.div 
+          {programmes.map((prog, idx) => (
+            <PsychologyThemedCard
               key={prog.id}
-              variants={itemVariants}
-              className="p-7 rounded-2xl glass-card glass-card-hover flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full glass-pill font-semibold uppercase tracking-wider">
-                    {prog.category}
-                  </span>
-                  <span className="text-[10px] font-mono text-slate-400 border border-white/10 px-2 py-0.5 rounded-full backdrop-blur-sm">
-                    {prog.statusBadge}
-                  </span>
-                </div>
-                
-                <h3 className="text-lg font-bold text-white mb-2 leading-snug">
-                  {prog.title}
-                </h3>
-                
-                <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                  {prog.summary}
-                </p>
-
-                <div className="space-y-2 text-xs border-t border-teal-500/15 pt-3 mb-6">
-                  <div>
-                    <span className="text-slate-400 font-mono text-[10px] uppercase block">Audience:</span>
-                    <span className="text-slate-200">{prog.audience}</span>
-                  </div>
-                  <div>
-                    <span className="text-slate-400 font-mono text-[10px] uppercase block">Format:</span>
-                    <span className="text-slate-200">{prog.format}</span>
-                  </div>
-                </div>
-              </div>
-
-              <Link
-                to={prog.actionHref}
-                className="w-full py-2.5 rounded-xl glass-button-secondary text-center text-xs font-semibold transition-all block"
-              >
-                {prog.actionText}
-              </Link>
-            </motion.div>
+              variant={[1, 2, 7, 3, 5, 8][idx % 6]}
+              tagLeft={prog.category}
+              tagRight={prog.statusBadge}
+              title={prog.title}
+              description={prog.summary}
+              meta1={{ icon: Users, label: `Audience: ${prog.audience}` }}
+              meta2={{ icon: Monitor, label: `Format: ${prog.format}` }}
+              ctaText={prog.actionText}
+              ctaLink={prog.actionHref}
+              motionVariants={itemVariants}
+            />
           ))}
         </motion.div>
       </section>
@@ -446,17 +401,19 @@ export default function HomePage() {
             className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
             {accessAndAffordability.principles.map((pr, idx) => (
-              <motion.div 
+              <PsychologyThemedCard
                 key={idx}
-                variants={itemVariants}
-                className="p-6 rounded-2xl glass-card glass-card-hover"
-              >
-                <div className="w-8 h-8 rounded-lg bg-teal-500/15 border border-teal-500/25 flex items-center justify-center text-teal-300 mb-3 text-xs font-bold font-mono">
-                  0{idx + 1}
-                </div>
-                <h3 className="text-sm font-bold text-white mb-2">{pr.title}</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">{pr.description}</p>
-              </motion.div>
+                variant={[6, 8, 10, 3][idx % 4]}
+                tagLeft={`Principle 0${idx + 1}`}
+                tagRight="Affordability"
+                title={pr.title}
+                description={pr.description}
+                meta1={{ icon: Users, label: "Transparent Criteria" }}
+                meta2={{ icon: Monitor, label: "Sliding Scale & Subsidy" }}
+                ctaText="Read Fee Details"
+                ctaLink="/counselling"
+                motionVariants={itemVariants}
+              />
             ))}
           </motion.div>
         </div>
@@ -498,51 +455,24 @@ export default function HomePage() {
           viewport={bidirectionalViewport}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          {internships.map((track) => (
-            <motion.div 
+          {internships.map((track, idx) => (
+            <PsychologyThemedCard
               key={track.id}
-              variants={itemVariants}
-              className="p-7 rounded-2xl glass-card glass-card-hover flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[10px] font-mono px-2.5 py-1 rounded-full glass-pill font-semibold uppercase tracking-wider">
-                    {track.badge}
-                  </span>
-                  <span className="text-[10px] font-mono text-teal-400">
-                    {track.commitment}
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {track.title}
-                </h3>
-
-                <div className="text-xs text-slate-300 mb-4 pb-3 border-b border-teal-500/15">
-                  <span className="text-slate-400 font-mono text-[10px] uppercase block mb-0.5">Eligibility:</span>
-                  <span>{track.level}</span>
-                </div>
-
-                <div className="space-y-3 mb-6">
-                  <div>
-                    <span className="text-slate-400 font-mono text-[10px] uppercase block mb-1">Learning Focus:</span>
-                    <p className="text-xs text-slate-300 leading-relaxed">{track.objectives}</p>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-200/90 text-[11px] leading-relaxed">
-                    <strong className="text-amber-300 block mb-0.5">Clinical Boundary:</strong>
-                    {track.boundaries}
-                  </div>
-                </div>
-              </div>
-
-              <Link
-                to="/internship"
-                className="w-full py-2.5 rounded-xl glass-button-secondary text-center text-xs font-semibold block"
-              >
-                Review Track &amp; Apply
-              </Link>
-            </motion.div>
+              variant={[3, 4, 9][idx % 3]}
+              tagLeft={track.badge}
+              tagRight={track.commitment}
+              title={track.title}
+              description={track.objectives}
+              bullets={[
+                `Eligibility: ${track.level}`,
+                `Boundary: ${track.boundaries}`
+              ]}
+              meta1={{ icon: GraduationCap, label: track.level }}
+              meta2={{ icon: ShieldCheck, label: "Supervised • Non-Autonomous" }}
+              ctaText="Review Track & Apply"
+              ctaLink="/internship"
+              motionVariants={itemVariants}
+            />
           ))}
         </motion.div>
       </section>
@@ -583,39 +513,24 @@ export default function HomePage() {
           viewport={bidirectionalViewport}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {workshops.map((ws) => (
-            <motion.div 
+          {workshops.map((ws, idx) => (
+            <PsychologyThemedCard
               key={ws.id}
-              variants={itemVariants}
-              className="p-6 rounded-2xl glass-card glass-card-hover flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-3">
-                  <span className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/10">{ws.duration}</span>
-                  <span className="text-teal-400">{ws.languages}</span>
-                </div>
-
-                <h3 className="text-base font-bold text-white mb-2 leading-snug">
-                  {ws.title}
-                </h3>
-
-                <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                  {ws.summary}
-                </p>
-
-                <div className="text-[11px] text-slate-400 space-y-1 mb-6 border-t border-teal-500/15 pt-3">
-                  <div><strong className="text-slate-300">Audience:</strong> {ws.audience}</div>
-                  <div><strong className="text-slate-300">Cohort Cap:</strong> {ws.groupSize}</div>
-                </div>
-              </div>
-
-              <Link
-                to="/workshops"
-                className="w-full py-2 rounded-xl glass-button-secondary text-center text-xs font-semibold block"
-              >
-                Request Session
-              </Link>
-            </motion.div>
+              variant={[4, 2, 8][idx % 3]}
+              tagLeft={ws.duration}
+              tagRight={ws.languages}
+              title={ws.title}
+              description={ws.summary}
+              bullets={[
+                `Audience: ${ws.audience}`,
+                `Cohort Cap: ${ws.groupSize}`
+              ]}
+              meta1={{ icon: Users, label: `Cohort: ${ws.groupSize}` }}
+              meta2={{ icon: Monitor, label: ws.languages }}
+              ctaText="Request Session"
+              ctaLink="/workshops"
+              motionVariants={itemVariants}
+            />
           ))}
         </motion.div>
       </section>
@@ -648,28 +563,19 @@ export default function HomePage() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {communityActivities.map((act, idx) => (
-            <motion.div 
+            <PsychologyThemedCard
               key={idx}
-              variants={itemVariants}
-              className="p-6 rounded-2xl glass-card glass-card-hover flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between text-[10px] font-mono text-teal-300 mb-3">
-                  <span className="px-2 py-0.5 rounded glass-pill font-semibold uppercase">{act.type}</span>
-                  <span className="text-slate-400">{act.frequency}</span>
-                </div>
-                <h3 className="text-base font-bold text-white mb-2">
-                  {act.title}
-                </h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  {act.description}
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-teal-500/15 flex items-center gap-1.5 text-xs text-teal-400">
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>Verified Community Initiative</span>
-              </div>
-            </motion.div>
+              variant={[2, 5, 7, 8][idx % 4]}
+              tagLeft={act.type}
+              tagRight={act.frequency}
+              title={act.title}
+              description={act.description}
+              meta1={{ icon: Users, label: "Open Public Circles" }}
+              meta2={{ icon: Clock, label: act.frequency }}
+              ctaText="Join Activity Circle"
+              ctaLink="/community"
+              motionVariants={itemVariants}
+            />
           ))}
         </motion.div>
       </section>
@@ -703,21 +609,19 @@ export default function HomePage() {
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
             {trustAndSafety.corePillars.map((pillar, idx) => (
-              <motion.div 
+              <PsychologyThemedCard
                 key={idx}
-                variants={itemVariants}
-                className="p-6 rounded-2xl bg-[#08121E]/60 backdrop-blur-md border border-teal-500/20"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <ShieldCheck className="w-5 h-5 text-teal-400 shrink-0" />
-                  <h3 className="text-base font-bold text-white">
-                    {pillar.title}
-                  </h3>
-                </div>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  {pillar.description}
-                </p>
-              </motion.div>
+                variant={[6, 9, 3, 1][idx % 4]}
+                tagLeft="Safety Pillar"
+                tagRight={`0${idx + 1}`}
+                title={pillar.title}
+                description={pillar.description}
+                meta1={{ icon: ShieldCheck, label: "Strict Clinical Governance" }}
+                meta2={{ icon: Users, label: "Safeguarding Protocol" }}
+                ctaText="Read Safeguarding Charter"
+                ctaLink="/trust-and-safety"
+                motionVariants={itemVariants}
+              />
             ))}
           </motion.div>
         </div>
