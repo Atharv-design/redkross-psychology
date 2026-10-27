@@ -2,15 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, ExternalLink, Heart } from 'lucide-react';
 import { PSYCHOLOGY_DATA } from '../data/psychologyData';
+import DoodleCrewFooter from './ui/doodle-crew-footer-psychology';
 
 export default function PsychologyFooter() {
   const { identity, emergency } = PSYCHOLOGY_DATA;
 
   return (
-    <footer className="w-full bg-[#08121E]/85 backdrop-blur-2xl border-t border-teal-500/20 text-slate-400 font-sans select-none relative z-20">
+    <footer className="w-full bg-[#08121E]/90 backdrop-blur-2xl border-t border-teal-500/20 text-slate-400 font-sans select-none relative z-20">
       
       {/* Top Banner in Footer: Crisis Reminder (Glassmorphic) */}
-      <div className="border-b border-amber-500/25 bg-[#08121E]/60 backdrop-blur-xl px-4 py-4">
+      <div className="border-b border-amber-500/25 bg-[#08121E]/70 backdrop-blur-xl px-4 py-4">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-amber-200/90">
           <div className="flex items-center gap-2 text-center md:text-left">
             <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
@@ -126,6 +127,41 @@ export default function PsychologyFooter() {
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* Interactive Hand-Drawn Doodle Crew Brandmark for RedKross Psychology */}
+        <div className="my-8 pt-8 border-t border-teal-500/15 overflow-hidden">
+          <DoodleCrewFooter
+            as="div"
+            showTop={false}
+            showBar={false}
+            wordmark="REDKROSS"
+            subWordmark="PSYCHOLOGY"
+            wordmarkColorMode="logo"
+            tagline="Empathetic Listening, Stigma-Free Support, Ethical Governance & Community Psychological Literacy"
+            height="520px"
+            palette={{
+              background: "transparent",
+              ink: "#f1f5f9",
+              accent: "#2DD4BF"
+            }}
+            crew={[
+              { kind: "yeti", letter: 0, seat: "front", scale: 0.44, offset: -0.32, says: "Deep breath: inhale calm, exhale tension 🌿" },
+              { kind: "bird", letter: 1, seat: "top", offset: 0.08, says: "Your feelings are valid, take all the time you need 💚" },
+              { kind: "ghost", letter: 2, seat: "behind", offset: 0.0, says: "You don't have to carry it all alone ✨" },
+              { kind: "cat", letter: 3, seat: "top", offset: 0.05, says: "Safe, confidential space with zero judgment 🕊️" },
+              { kind: "kid", letter: 4, seat: "front", offset: 0.1, says: "One gentle step at a time, at your own pace 🌸" },
+              { kind: "mushroom", letter: 5, seat: "front", offset: -0.05, says: "Your mind deserves the exact same care as your body 🧘" },
+              { kind: "bird", letter: 6, seat: "top", offset: -0.08, flip: true, says: "Kindness and empathy start from within 🌿" },
+              { kind: "cat", letter: 7, seat: "front", flip: true, offset: 0.12, says: "Listening with an open, caring heart 💙" }
+            ]}
+            doodles={[]}
+            doodleCount={0}
+            actions={[
+              { label: "Enquire for Support", href: "/counselling", variant: "solid" },
+              { label: "Institutional Workshops", href: "/workshops", variant: "outline" }
+            ]}
+          />
         </div>
 
         {/* Bottom Legal & Safeguarding Bar */}
