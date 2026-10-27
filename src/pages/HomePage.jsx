@@ -30,8 +30,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.18,
-      delayChildren: 0.12
+      staggerChildren: 0.08,
+      delayChildren: 0.05
     }
   }
 };
@@ -39,16 +39,14 @@ const containerVariants = {
 const itemVariants = {
   hidden: { 
     opacity: 0, 
-    y: 36,
-    filter: 'blur(4px)'
+    y: 20
   },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
     transition: {
-      duration: 1.15,
-      ease: [0.16, 1, 0.3, 1]
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1]
     }
   }
 };
@@ -56,24 +54,22 @@ const itemVariants = {
 const sectionVariants = {
   hidden: { 
     opacity: 0, 
-    y: 28,
-    filter: 'blur(3px)'
+    y: 20
   },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
     transition: {
-      duration: 1.05,
-      ease: [0.16, 1, 0.3, 1]
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1]
     }
   }
 };
 
 const bidirectionalViewport = {
-  once: false,
-  amount: 0.12,
-  margin: '-40px'
+  once: true,
+  amount: 0.25,
+  margin: '0px 0px -40px 0px'
 };
 
 export default function HomePage() {

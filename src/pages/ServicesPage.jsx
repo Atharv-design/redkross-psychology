@@ -31,8 +31,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.14,
-      delayChildren: 0.1
+      staggerChildren: 0.08,
+      delayChildren: 0.05
     }
   }
 };
@@ -40,16 +40,14 @@ const containerVariants = {
 const itemVariants = {
   hidden: { 
     opacity: 0, 
-    y: 30,
-    filter: 'blur(4px)'
+    y: 20
   },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
     transition: {
-      duration: 0.85,
-      ease: [0.16, 1, 0.3, 1]
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1]
     }
   }
 };
@@ -250,68 +248,76 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Transparent Fee & Community Subsidies Section with Signature Motif */}
-      <section className="relative px-4 sm:px-6 lg:px-8 py-16 max-w-7xl mx-auto">
-        <div className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 shadow-2xl relative overflow-hidden group">
-          {/* Signature Themed Card Background Artwork */}
+      {/* Transparent Fee & Community Subsidies Section - Crystal Clear 2x2 Grid */}
+      <section className="relative px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-950/80 text-teal-300 border border-teal-500/40 text-xs font-mono tracking-wider">
+            <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
+            <span>SECTION 8 NON-PROFIT COMMITMENT // FINANCIAL TRANSPARENCY</span>
+          </div>
+          <h2 className="text-2xl sm:text-4xl font-royal font-bold uppercase tracking-tight bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
+            {accessAndAffordability.headline}
+          </h2>
+          <p className="text-sm sm:text-base text-slate-200 font-sans leading-relaxed max-w-2xl mx-auto">
+            {accessAndAffordability.statement} We operate with strict financial transparency and verified institutional sliding scales for students and economically challenged applicants.
+          </p>
+        </div>
+
+        {/* 2x2 Grid of the 4 Principles with Pristine Contrast & Signature Motif */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto mb-12">
+          {accessAndAffordability.principles.map((pr, pidx) => (
+            <PsychologyThemedCard
+              key={pidx}
+              variant={[10, 8, 2, 9][pidx % 4]}
+              tagLeft={`Principle 0${pidx + 1}`}
+              tagRight="Transparent Policy"
+              title={pr.title}
+              description={pr.description}
+              bullets={[
+                "Pre-session transparent disclosure",
+                "Need-based fee adjustment upon request",
+                "Zero hidden costs or retainers"
+              ]}
+              meta1={{ icon: ShieldCheck, label: "Non-Profit Ethics" }}
+              meta2={{ icon: Users, label: "Equitable Care" }}
+              ctaText="Read Fee Details"
+              ctaLink="/counselling"
+              motionVariants={itemVariants}
+            />
+          ))}
+        </div>
+
+        {/* High-Impact Horizontal Intake & Emergency Notice Banner */}
+        <div className="max-w-5xl mx-auto rounded-3xl p-6 sm:p-10 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/40 shadow-2xl relative overflow-hidden group">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-luminosity group-hover:opacity-30 transition-opacity duration-700 pointer-events-none scale-105"
+            className="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-luminosity group-hover:opacity-25 transition-opacity duration-700 pointer-events-none scale-105"
             style={{ backgroundImage: `url('/assets/cards/card-book-appointment-fullspan.png')` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#06101B]/95 via-[#06101B]/85 to-[#06101B]/75 pointer-events-none" />
-          <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500/15 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#06101B]/95 via-[#06101B]/90 to-[#06101B]/80 pointer-events-none" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-4">
-              <span className="px-3.5 py-1 rounded-full text-xs font-mono tracking-wider bg-teal-950/80 text-teal-300 border border-teal-500/40">
-                SECTION 8 NON-PROFIT COMMITMENT
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
+            <div className="lg:col-span-8 space-y-2">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-teal-400">
+                Ethical Intake Coordination
               </span>
-
-              <h2 className="text-2xl sm:text-4xl font-royal font-bold uppercase tracking-tight bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
-                {accessAndAffordability.headline}
-              </h2>
-
-              <p className="text-sm sm:text-base text-slate-300/90 leading-relaxed font-sans">
-                {accessAndAffordability.statement} We operate with strict financial transparency and verified institutional sliding scales for students and economically challenged applicants.
+              <h3 className="text-xl sm:text-2xl font-royal font-bold uppercase tracking-tight text-white">
+                Ready to Discuss Support Options?
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-200/90 leading-relaxed font-sans">
+                Submit a brief non-clinical intake request. Our care coordinator assesses suitability and contacts you with transparent sliding-scale options within 24 business hours.
               </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                {accessAndAffordability.principles.map((pr, pidx) => (
-                  <div key={pidx} className="p-3.5 rounded-xl bg-[#06101B]/80 border border-teal-500/20">
-                    <h4 className="text-xs font-royal font-bold uppercase tracking-wider text-teal-200 mb-1">
-                      {pr.title}
-                    </h4>
-                    <p className="text-xs text-slate-300/80 leading-relaxed font-sans">
-                      {pr.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
             </div>
 
-            <div className="lg:col-span-5 flex flex-col gap-4">
-              <div className="rounded-2xl p-6 bg-[#06101B]/90 border border-teal-500/30 space-y-4 text-center">
-                <ShieldCheck className="w-10 h-10 text-teal-400 mx-auto" />
-                <h3 className="text-xl font-royal font-bold uppercase tracking-tight bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
-                  Confidential Intake Booking
-                </h3>
-                <p className="text-xs text-slate-300/80 font-sans">
-                  Submit a brief non-clinical intake request. Our care coordinator assesses suitability and contacts you with transparent details within 24 business hours.
-                </p>
-                <Link
-                  to="/counselling"
-                  className="w-full py-3.5 rounded-xl bg-teal-500/20 hover:bg-teal-500/30 border border-teal-400/40 hover:border-teal-300 text-xs sm:text-sm font-royal font-bold uppercase tracking-wider text-teal-100 transition-all duration-300 shadow-md shadow-teal-950/40 block"
-                >
-                  Book Counselling Intake
-                </Link>
-              </div>
-
-              <div className="p-4 rounded-xl bg-amber-950/20 border border-amber-500/30 flex items-start gap-3">
-                <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
-                <p className="text-[11px] text-amber-200/90 leading-relaxed font-sans">
-                  <strong>Notice:</strong> Services are not an emergency crisis response. For acute distress or self-harm concerns, please call national toll-free Tele-MANAS at <a href="tel:14416" className="underline font-bold text-amber-300">14416</a>.
-                </p>
-              </div>
+            <div className="lg:col-span-4 flex flex-col gap-3">
+              <Link
+                to="/counselling"
+                className="w-full py-3.5 px-6 rounded-xl bg-teal-500/20 hover:bg-teal-500/30 border border-teal-400/50 hover:border-teal-300 text-xs sm:text-sm font-royal font-bold uppercase tracking-wider text-teal-100 transition-all duration-300 shadow-md shadow-teal-950/40 text-center block"
+              >
+                Book Counselling Intake
+              </Link>
+              <p className="text-[11px] text-slate-400 text-center font-sans">
+                Emergency? Call Tele-MANAS at <a href="tel:14416" className="text-amber-300 font-bold underline">14416</a>
+              </p>
             </div>
           </div>
         </div>

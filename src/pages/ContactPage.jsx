@@ -23,8 +23,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.14,
-      delayChildren: 0.1
+      staggerChildren: 0.08,
+      delayChildren: 0.05
     }
   }
 };
@@ -32,16 +32,14 @@ const containerVariants = {
 const itemVariants = {
   hidden: { 
     opacity: 0, 
-    y: 30,
-    filter: 'blur(4px)'
+    y: 20
   },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
     transition: {
-      duration: 0.85,
-      ease: [0.16, 1, 0.3, 1]
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1]
     }
   }
 };
@@ -192,9 +190,9 @@ export default function ContactPage() {
         <motion.div 
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, amount: 0.2, margin: "0px 0px -40px 0px" }}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto"
         >
           {deskCards.map((desk, idx) => (
             <PsychologyThemedCard

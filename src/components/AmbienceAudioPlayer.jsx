@@ -300,57 +300,37 @@ export default function AmbienceAudioPlayer() {
         </div>
       )}
 
-      {/* Main Glassmorphic Control Pill */}
-      <div className="flex items-center rounded-full bg-[#081524]/95 backdrop-blur-2xl border border-teal-500/40 hover:border-teal-300 shadow-[0_8px_32px_rgba(0,0,0,0.65)] hover:shadow-[0_0_25px_rgba(45,212,191,0.35)] transition-all duration-300 ring-1 ring-white/5 group">
+      {/* Main Glassmorphic Control Pill - Pure Icon Minimal Design */}
+      <div className="flex items-center p-1.5 rounded-full bg-[#081524]/95 backdrop-blur-2xl border border-teal-500/40 hover:border-teal-300 shadow-[0_8px_32px_rgba(0,0,0,0.65)] hover:shadow-[0_0_25px_rgba(45,212,191,0.35)] transition-all duration-300 ring-1 ring-white/5">
         
-        {/* Left Section: Play / Pause Button with Label & Waveforms */}
+        {/* Play / Pause Circular Icon Button */}
         <button
           onClick={togglePlay}
-          className="flex items-center gap-2.5 pl-3.5 pr-2.5 py-2.5 focus:outline-none cursor-pointer"
-          title={isPlaying ? "Pause 528 Hz Healing Sound" : "Click to Play 528 Hz Solfeggio Healing Sound"}
-          aria-label={isPlaying ? "Pause 528 Hz Healing Sound" : "Click to Play 528 Hz Solfeggio Healing Sound"}
-        >
-          {/* Play / Pause Glowing Circular Indicator */}
-          <div className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${
+          className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none ${
             isPlaying 
               ? 'bg-teal-400 text-[#08121E] shadow-[0_0_15px_rgba(45,212,191,0.6)] scale-105' 
-              : 'bg-teal-500/20 text-teal-300 border border-teal-500/40 group-hover:bg-teal-500/30 group-hover:scale-105'
-          }`}>
-            {isPlaying ? (
-              <Pause className="w-3.5 h-3.5 fill-current" />
-            ) : (
-              <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-            )}
-          </div>
-
-          {/* Dynamic Label */}
-          <span className="font-royal text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover:from-white group-hover:to-teal-200 transition-all">
-            {isPlaying ? "528 Hz Playing" : "Play 528 Hz Sound"}
-          </span>
-
-          {/* Equalizer Sound Waves */}
+              : 'bg-teal-500/20 text-teal-300 border border-teal-500/40 hover:bg-teal-500/30 hover:scale-105'
+          }`}
+          title={isPlaying ? "Pause 528 Hz Ambience" : "Play 528 Hz Ambience"}
+          aria-label={isPlaying ? "Pause 528 Hz Ambience" : "Play 528 Hz Ambience"}
+        >
           {isPlaying ? (
-            <span className="flex items-center gap-0.5 h-3.5 px-0.5">
-              <span className="w-1 h-full bg-teal-400 rounded-full animate-[pulse_0.9s_ease-in-out_infinite] shadow-[0_0_6px_rgba(45,212,191,0.8)]" />
-              <span className="w-1 h-3/5 bg-teal-300 rounded-full animate-[pulse_1.3s_ease-in-out_infinite_0.2s] shadow-[0_0_6px_rgba(45,212,191,0.8)]" />
-              <span className="w-1 h-full bg-teal-400 rounded-full animate-[pulse_1.0s_ease-in-out_infinite_0.4s] shadow-[0_0_6px_rgba(45,212,191,0.8)]" />
-              <span className="w-1 h-4/5 bg-teal-200 rounded-full animate-[pulse_1.2s_ease-in-out_infinite_0.6s] shadow-[0_0_6px_rgba(45,212,191,0.8)]" />
-            </span>
+            <Pause className="w-4 h-4 fill-current" />
           ) : (
-            <span className="w-2 h-2 rounded-full bg-teal-400/40 group-hover:bg-teal-400 animate-ping duration-1000" />
+            <Play className="w-4 h-4 fill-current ml-0.5" />
           )}
         </button>
 
         {/* Vertical Divider */}
-        <div className="w-[1px] h-5 bg-teal-500/25 my-auto" />
+        <div className="w-[1px] h-5 bg-teal-500/25 mx-1" />
 
-        {/* Right Section: Dedicated Volume Icon Button with Direct Click to Pin */}
+        {/* Dedicated Volume Icon Button */}
         <button
           onClick={toggleVolumePopover}
-          className={`p-2.5 pr-3.5 rounded-r-full text-slate-300 hover:text-teal-200 hover:bg-teal-500/15 transition-all focus:outline-none cursor-pointer flex items-center justify-center ${
+          className={`w-9 h-9 rounded-full text-slate-300 hover:text-teal-200 hover:bg-teal-500/15 transition-all focus:outline-none cursor-pointer flex items-center justify-center ${
             showVolumeSlider ? 'text-teal-300 bg-teal-500/20' : ''
           }`}
-          title="Adjust Volume (Click to pin slider open)"
+          title="Adjust Volume"
           aria-label="Adjust Volume"
         >
           {isMuted || volume === 0 ? (
@@ -361,7 +341,6 @@ export default function AmbienceAudioPlayer() {
             <Volume2 className="w-4 h-4 text-teal-400" />
           )}
         </button>
-
       </div>
     </div>
   );

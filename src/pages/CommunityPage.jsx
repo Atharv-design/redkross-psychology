@@ -22,8 +22,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.14,
-      delayChildren: 0.1
+      staggerChildren: 0.08,
+      delayChildren: 0.05
     }
   }
 };
@@ -31,16 +31,14 @@ const containerVariants = {
 const itemVariants = {
   hidden: { 
     opacity: 0, 
-    y: 30,
-    filter: 'blur(4px)'
+    y: 20
   },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
     transition: {
-      duration: 0.85,
-      ease: [0.16, 1, 0.3, 1]
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1]
     }
   }
 };
