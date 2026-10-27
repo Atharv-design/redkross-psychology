@@ -19,6 +19,7 @@ import {
   Lightbulb
 } from 'lucide-react';
 import { PSYCHOLOGY_DATA } from '../data/psychologyData';
+import FrequentlyAskedQuestions from '@/components/ui/frequently-asked-questions-with-accordion';
 
 // Bidirectional Slow-Motion Animation System
 // once: false ensures smooth re-triggering whenever scrolling up or down
@@ -722,54 +723,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10. FREQUENTLY ASKED QUESTIONS (PDF Section 5.13) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={bidirectionalViewport}
-          className="text-center max-w-2xl mx-auto mb-14"
-        >
-          <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
-            Clear Answers
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2 mb-3">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-slate-300 text-sm leading-relaxed">
-            Transparent guidance regarding confidentiality limits, fees, minor assent, and institutional workshops.
-          </p>
-        </motion.div>
-
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={bidirectionalViewport}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
-          {faqs.map((faq, idx) => (
-            <motion.div 
-              key={idx}
-              variants={itemVariants}
-              className="p-6 rounded-2xl glass-card glass-card-hover flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-start gap-2.5 mb-3">
-                  <HelpCircle className="w-4 h-4 text-teal-400 shrink-0 mt-0.5" />
-                  <h3 className="text-sm font-bold text-white leading-snug">
-                    {faq.q}
-                  </h3>
-                </div>
-                <p className="text-xs text-slate-300 leading-relaxed pl-6">
-                  {faq.a}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
+      {/* 10. FREQUENTLY ASKED QUESTIONS (Accordion Component - PDF Section 5.13) */}
+      <FrequentlyAskedQuestions 
+        title="Frequently Asked Questions"
+        description="Transparent guidance regarding clinical confidentiality, session protocols, sliding scales, and institutional workshops. If you don't find what you need, please reach out directly to"
+        supportEmail="psychology@redkross.org.in"
+        data={faqs.map(f => ({ question: f.q, answer: f.a }))}
+        className="py-12"
+      />
 
       {/* 11. CLOSING INSTITUTIONAL CTA - Bidirectional Slomo */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
