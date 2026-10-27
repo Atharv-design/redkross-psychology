@@ -3,6 +3,8 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import UrgentHelpStrip from './components/UrgentHelpStrip';
 import PsychologyNavbar from './components/PsychologyNavbar';
 import PsychologyFooter from './components/PsychologyFooter';
+import PsychologyBackgroundWatermark from './components/PsychologyBackgroundWatermark';
+import AmbienceAudioPlayer from './components/AmbienceAudioPlayer';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -19,17 +21,23 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#0A0F1D] text-slate-100 flex flex-col font-sans relative selection:bg-teal-500/30 selection:text-teal-200">
+    <div className="min-h-screen bg-[#08121E] text-slate-100 flex flex-col font-sans relative selection:bg-teal-500/30 selection:text-teal-200">
       <ScrollToTop />
       
-      {/* 1. Mandatory Top Urgent-Help Crisis Strip (Tele-MANAS & KIRAN) */}
+      {/* 1. Ambient RedKross Crest Watermark & Calming Light Blooms */}
+      <PsychologyBackgroundWatermark />
+
+      {/* 2. Soft Rain & Forest Ambience Sound Controller */}
+      <AmbienceAudioPlayer />
+
+      {/* 3. Mandatory Top Urgent-Help Crisis Strip (Tele-MANAS & KIRAN) */}
       <UrgentHelpStrip />
 
-      {/* 2. Responsive Calming Navigation */}
+      {/* 4. Responsive Calming Navigation (Glassmorphic) */}
       <PsychologyNavbar />
 
-      {/* 3. Main Routed View */}
-      <main className="flex-1">
+      {/* 5. Main Routed View */}
+      <main className="flex-1 relative z-10">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -55,7 +63,7 @@ export default function App() {
         </Routes>
       </main>
 
-      {/* 4. Unified Institutional Footer */}
+      {/* 6. Unified Institutional Footer (Glassmorphic) */}
       <PsychologyFooter />
     </div>
   );
