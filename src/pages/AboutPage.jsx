@@ -21,41 +21,70 @@ import {
 } from 'lucide-react';
 import { PSYCHOLOGY_DATA } from '../data/psychologyData';
 
+// Bidirectional Slow-Motion Animation System
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1
+      staggerChildren: 0.18,
+      delayChildren: 0.12
     }
   }
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { 
+    opacity: 0, 
+    y: 36,
+    filter: 'blur(4px)'
+  },
   visible: {
     opacity: 1,
     y: 0,
+    filter: 'blur(0px)',
     transition: {
-      duration: 0.7,
+      duration: 1.15,
       ease: [0.16, 1, 0.3, 1]
     }
   }
+};
+
+const sectionVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 28,
+    filter: 'blur(3px)'
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 1.05,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  }
+};
+
+const bidirectionalViewport = {
+  once: false,
+  amount: 0.12,
+  margin: '-40px'
 };
 
 export default function AboutPage() {
   const { identity, about } = PSYCHOLOGY_DATA;
 
   return (
-    <div className="min-h-screen text-slate-100 pb-20">
+    <div className="min-h-screen text-slate-100 pb-20 overflow-hidden">
       {/* 1. Page Header & Editorial Breadcrumb */}
       <section className="relative pt-12 pb-16 md:pt-16 md:pb-20 border-b border-teal-500/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl"
           >
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold tracking-wider uppercase mb-5">
@@ -74,17 +103,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 2. Origin Story: From Technology to Community Wellbeing */}
+      {/* 2. Origin Story: From Technology to Community Wellbeing (Bidirectional) */}
       <section className="py-16 md:py-24 border-b border-teal-500/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
             {/* Left Column: Origin Story */}
             <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.7 }}
+              variants={sectionVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={bidirectionalViewport}
               className="lg:col-span-7 space-y-6"
             >
               <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
@@ -134,13 +163,13 @@ export default function AboutPage() {
 
             {/* Right Column: Mission & Vision Glass Cards */}
             <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.7 }}
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={bidirectionalViewport}
               className="lg:col-span-5 space-y-6"
             >
-              <div className="p-8 rounded-2xl glass-card glass-card-hover border-teal-500/30">
+              <motion.div variants={itemVariants} className="p-8 rounded-2xl glass-card glass-card-hover border-teal-500/30">
                 <div className="w-10 h-10 rounded-xl bg-teal-500/15 text-teal-300 flex items-center justify-center mb-5">
                   <Compass className="w-5 h-5" />
                 </div>
@@ -148,9 +177,9 @@ export default function AboutPage() {
                 <p className="text-slate-300 leading-relaxed text-base">
                   {about.mission}
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="p-8 rounded-2xl glass-card glass-card-hover">
+              <motion.div variants={itemVariants} className="p-8 rounded-2xl glass-card glass-card-hover">
                 <div className="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-300 flex items-center justify-center mb-5">
                   <Sparkles className="w-5 h-5" />
                 </div>
@@ -158,10 +187,10 @@ export default function AboutPage() {
                 <p className="text-slate-300 leading-relaxed text-base">
                   {about.vision}
                 </p>
-              </div>
+              </motion.div>
 
               {/* Ecosystem Cross-Link */}
-              <div className="p-6 rounded-2xl glass-card flex items-start gap-4">
+              <motion.div variants={itemVariants} className="p-6 rounded-2xl glass-card flex items-start gap-4">
                 <FileText className="w-5 h-5 text-teal-400 shrink-0 mt-0.5" />
                 <div className="text-sm">
                   <div className="font-semibold text-white mb-1">Parent Foundation Governance</div>
@@ -178,20 +207,20 @@ export default function AboutPage() {
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 3. Core Values & Ethical Pillars (PDF Section 5.1) - Staggered Glass Cards */}
+      {/* 3. Core Values & Ethical Pillars (PDF Section 5.1) - Bidirectional Slomo Stagger */}
       <section className="py-16 md:py-24 border-b border-teal-500/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.6 }}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={bidirectionalViewport}
             className="max-w-3xl mb-14"
           >
             <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
@@ -209,7 +238,7 @@ export default function AboutPage() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-40px' }}
+            viewport={bidirectionalViewport}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {about.values.map((val) => (
@@ -243,10 +272,10 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 border-b border-teal-500/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.6 }}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={bidirectionalViewport}
             className="max-w-3xl mb-12"
           >
             <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
@@ -265,7 +294,7 @@ export default function AboutPage() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-40px' }}
+            viewport={bidirectionalViewport}
             className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12"
           >
             {about.governance.roles.map((item, idx) => (
@@ -330,10 +359,10 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 border-b border-teal-500/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.6 }}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={bidirectionalViewport}
             className="text-center max-w-2xl mx-auto mb-14"
           >
             <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
@@ -351,7 +380,7 @@ export default function AboutPage() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-40px' }}
+            viewport={bidirectionalViewport}
             className="grid grid-cols-1 md:grid-cols-3 gap-6"
           >
             {/* 1. Parent Foundation */}
@@ -448,10 +477,10 @@ export default function AboutPage() {
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.7 }}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={bidirectionalViewport}
             className="p-8 sm:p-12 rounded-3xl glass-card flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8"
           >
             <div className="max-w-2xl">

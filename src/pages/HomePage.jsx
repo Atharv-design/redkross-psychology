@@ -20,28 +20,57 @@ import {
 } from 'lucide-react';
 import { PSYCHOLOGY_DATA } from '../data/psychologyData';
 
-// Stagger Animation Variants for Smooth Staggered Scroll
+// Bidirectional Slow-Motion Animation System
+// once: false ensures smooth re-triggering whenever scrolling up or down
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1
+      staggerChildren: 0.18,
+      delayChildren: 0.12
     }
   }
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { 
+    opacity: 0, 
+    y: 36,
+    filter: 'blur(4px)'
+  },
   visible: {
     opacity: 1,
     y: 0,
+    filter: 'blur(0px)',
     transition: {
-      duration: 0.7,
+      duration: 1.15,
       ease: [0.16, 1, 0.3, 1]
     }
   }
+};
+
+const sectionVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 28,
+    filter: 'blur(3px)'
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 1.05,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  }
+};
+
+const bidirectionalViewport = {
+  once: false,
+  amount: 0.12,
+  margin: '-40px'
 };
 
 export default function HomePage() {
@@ -87,17 +116,17 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="space-y-28 pb-24 overflow-hidden">
+    <div className="space-y-32 pb-24 overflow-hidden">
       
       {/* 1. HERO SECTION (PDF Section 4.2) */}
-      <section className="relative pt-20 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="relative pt-16 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           
           {/* Institutional Glass Badge */}
           <motion.div 
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 16, filter: 'blur(4px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill text-xs font-mono mb-6"
           >
             <HeartHandshake className="w-3.5 h-3.5 text-teal-400" />
@@ -106,9 +135,9 @@ export default function HomePage() {
 
           {/* Canonical Headline from Spec with glowing understanding */}
           <motion.h1 
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            initial={{ opacity: 0, y: 28, filter: 'blur(6px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 1.15, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="text-4xl sm:text-6xl font-black text-white tracking-tight leading-[1.14] mb-6"
           >
             Your mind deserves care, <span className="text-[#2dd4bf] drop-shadow-[0_0_25px_rgba(45,212,191,0.4)]">understanding</span> and support.
@@ -116,19 +145,19 @@ export default function HomePage() {
 
           {/* Canonical Subtitle from Spec */}
           <motion.p 
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            initial={{ opacity: 0, y: 24, filter: 'blur(4px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 1.15, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto mb-10"
           >
             RedKross Psychology connects people with mental-health information, counselling enquiries, learning opportunities and community programmes. Explore what is available and take the next step at your own pace.
           </motion.p>
 
-          {/* 3 Primary Glass CTAs per Section 4.2 */}
+          {/* 3 Primary Glass CTAs */}
           <motion.div 
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 1.1, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-wrap items-center justify-center gap-4 text-xs font-bold uppercase tracking-wider"
           >
             <Link
@@ -158,7 +187,7 @@ export default function HomePage() {
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.45 }}
+            transition={{ duration: 1.2, delay: 0.6 }}
             className="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400"
           >
             <span className="flex items-center gap-1.5">
@@ -177,13 +206,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. CHOOSE YOUR PATH (PDF Section 4.3) - Staggered Glass Cards */}
+      {/* 2. CHOOSE YOUR PATH (PDF Section 4.3) - Bidirectional Slomo Stagger */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6 }}
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
           className="text-center max-w-2xl mx-auto mb-14"
         >
           <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
@@ -201,7 +230,7 @@ export default function HomePage() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
+          viewport={bidirectionalViewport}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {paths.map((p, idx) => {
@@ -239,13 +268,13 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* 3. SIX CORE PROGRAMMES (PDF Section 2 & 5.2) - Staggered Glass Cards */}
+      {/* 3. SIX CORE PROGRAMMES (PDF Section 2 & 5.2) - Bidirectional Slomo Stagger */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6 }}
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
         >
           <div className="max-w-2xl">
@@ -272,7 +301,7 @@ export default function HomePage() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
+          viewport={bidirectionalViewport}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {programmes.map((prog) => (
@@ -322,14 +351,14 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* 4. HOW SUPPORT WORKS (PDF Section 4.5) - Staggered 4 Steps */}
+      {/* 4. HOW SUPPORT WORKS (PDF Section 4.5) - Bidirectional Slomo Stagger */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-8 sm:p-12 rounded-3xl glass-card relative overflow-hidden">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.6 }}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={bidirectionalViewport}
             className="text-center max-w-2xl mx-auto mb-14"
           >
             <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
@@ -347,7 +376,7 @@ export default function HomePage() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-40px' }}
+            viewport={bidirectionalViewport}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative"
           >
             {howSupportWorks.map((step) => (
@@ -382,10 +411,10 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.6 }}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={bidirectionalViewport}
             className="lg:col-span-5 space-y-4"
           >
             <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
@@ -412,7 +441,7 @@ export default function HomePage() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-40px' }}
+            viewport={bidirectionalViewport}
             className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
             {accessAndAffordability.principles.map((pr, idx) => (
@@ -432,13 +461,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. TRAINING & INTERNSHIPS (PDF Section 5.6) - Staggered 3 Tracks */}
+      {/* 6. TRAINING & INTERNSHIPS (PDF Section 5.6) - Bidirectional Slomo Stagger */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6 }}
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
         >
           <div className="max-w-2xl">
@@ -465,7 +494,7 @@ export default function HomePage() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
+          viewport={bidirectionalViewport}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {internships.map((track) => (
@@ -517,13 +546,13 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* 7. WORKSHOPS CATALOGUE (PDF Section 5.5) */}
+      {/* 7. WORKSHOPS CATALOGUE (PDF Section 5.5) - Bidirectional Slomo Stagger */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6 }}
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
         >
           <div className="max-w-2xl">
@@ -550,7 +579,7 @@ export default function HomePage() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
+          viewport={bidirectionalViewport}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {workshops.map((ws) => (
@@ -593,10 +622,10 @@ export default function HomePage() {
       {/* 8. COMMUNITY & ACTIVITIES (PDF Section 5.7) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6 }}
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
           className="text-center max-w-2xl mx-auto mb-14"
         >
           <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
@@ -614,7 +643,7 @@ export default function HomePage() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
+          viewport={bidirectionalViewport}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {communityActivities.map((act, idx) => (
@@ -648,10 +677,10 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-8 sm:p-12 rounded-3xl glass-card relative overflow-hidden">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.6 }}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={bidirectionalViewport}
             className="max-w-2xl mb-12"
           >
             <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
@@ -669,7 +698,7 @@ export default function HomePage() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-40px' }}
+            viewport={bidirectionalViewport}
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
             {trustAndSafety.corePillars.map((pillar, idx) => (
@@ -696,10 +725,10 @@ export default function HomePage() {
       {/* 10. FREQUENTLY ASKED QUESTIONS (PDF Section 5.13) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6 }}
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
           className="text-center max-w-2xl mx-auto mb-14"
         >
           <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
@@ -717,7 +746,7 @@ export default function HomePage() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
+          viewport={bidirectionalViewport}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {faqs.map((faq, idx) => (
@@ -742,13 +771,13 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* 11. CLOSING INSTITUTIONAL CTA (Glassmorphic) */}
+      {/* 11. CLOSING INSTITUTIONAL CTA - Bidirectional Slomo */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.7 }}
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
           className="p-8 sm:p-14 rounded-3xl glass-card flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 relative overflow-hidden shadow-2xl"
         >
           <div className="max-w-2xl">
