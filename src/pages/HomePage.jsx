@@ -629,23 +629,50 @@ export default function HomePage() {
           initial="hidden"
           whileInView="visible"
           viewport={bidirectionalViewport}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="space-y-6"
         >
-          {communityActivities.map((act, idx) => (
-            <PsychologyThemedCard
-              key={idx}
-              variant={[2, 5, 7, 8][idx % 4]}
-              tagLeft={act.type}
-              tagRight={act.frequency}
-              title={act.title}
-              description={act.description}
-              meta1={{ icon: Users, label: "Open Public Circles" }}
-              meta2={{ icon: Clock, label: act.frequency }}
-              ctaText="Join Activity Circle"
-              ctaLink="/community"
-              motionVariants={itemVariants}
-            />
-          ))}
+          {/* Top 3 Cards in 3-column row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {communityActivities.slice(0, 3).map((act, idx) => (
+              <PsychologyThemedCard
+                key={idx}
+                variant={[2, 5, 7, 8][idx % 4]}
+                tagLeft={act.type}
+                tagRight={act.frequency}
+                title={act.title}
+                description={act.description}
+                meta1={{ icon: Users, label: "Open Public Circles" }}
+                meta2={{ icon: Clock, label: act.frequency }}
+                ctaText="Join Activity Circle"
+                ctaLink="/community"
+                motionVariants={itemVariants}
+              />
+            ))}
+          </div>
+
+          {/* Bottom 2 Cards (Mindful Morning Sessions & World Mental Health Day) Centered in Row */}
+          <div className="flex flex-col md:flex-row justify-center items-stretch gap-6 max-w-4xl mx-auto">
+            {communityActivities.slice(3, 5).map((act, idx) => {
+              const actualIdx = idx + 3;
+              return (
+                <div key={actualIdx} className="w-full md:w-1/2 flex flex-col">
+                  <PsychologyThemedCard
+                    variant={[2, 5, 7, 8][actualIdx % 4]}
+                    tagLeft={act.type}
+                    tagRight={act.frequency}
+                    title={act.title}
+                    description={act.description}
+                    meta1={{ icon: Users, label: "Open Public Circles" }}
+                    meta2={{ icon: Clock, label: act.frequency }}
+                    ctaText="Join Activity Circle"
+                    ctaLink="/community"
+                    motionVariants={itemVariants}
+                    className="h-full"
+                  />
+                </div>
+              );
+            })}
+          </div>
         </motion.div>
       </section>
 

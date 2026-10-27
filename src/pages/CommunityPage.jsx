@@ -145,31 +145,64 @@ export default function CommunityPage() {
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          className="space-y-6 sm:space-y-8"
         >
-          {communityActivities.map((act, idx) => {
-            const variantNumber = communityMotifs[idx % communityMotifs.length];
-            return (
-              <PsychologyThemedCard
-                key={idx}
-                variant={variantNumber}
-                tagLeft={act.type || "Community"}
-                tagRight={act.frequency || "Scheduled"}
-                title={act.title}
-                description={act.description}
-                bullets={[
-                  `Format: ${act.frequency}`,
-                  "Bilingual Hindi & English dialogue",
-                  "Free public attendance & open participation"
-                ]}
-                meta1={{ icon: Calendar, label: act.frequency }}
-                meta2={{ icon: Users, label: act.type }}
-                ctaText="Participate in Drive"
-                ctaLink="#volunteer-form"
-                motionVariants={itemVariants}
-              />
-            );
-          })}
+          {/* Top 3 Cards in 3-column row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {communityActivities.slice(0, 3).map((act, idx) => {
+              const variantNumber = communityMotifs[idx % communityMotifs.length];
+              return (
+                <PsychologyThemedCard
+                  key={idx}
+                  variant={variantNumber}
+                  tagLeft={act.type || "Community"}
+                  tagRight={act.frequency || "Scheduled"}
+                  title={act.title}
+                  description={act.description}
+                  bullets={[
+                    `Format: ${act.frequency}`,
+                    "Bilingual Hindi & English dialogue",
+                    "Free public attendance & open participation"
+                  ]}
+                  meta1={{ icon: Calendar, label: act.frequency }}
+                  meta2={{ icon: Users, label: act.type }}
+                  ctaText="Participate in Drive"
+                  ctaLink="#volunteer-form"
+                  motionVariants={itemVariants}
+                />
+              );
+            })}
+          </div>
+
+          {/* Bottom 2 Cards (Mindful Morning Sessions & World Mental Health Day) Centered in Row */}
+          <div className="flex flex-col md:flex-row justify-center items-stretch gap-6 sm:gap-8 max-w-4xl mx-auto">
+            {communityActivities.slice(3, 5).map((act, idx) => {
+              const actualIdx = idx + 3;
+              const variantNumber = communityMotifs[actualIdx % communityMotifs.length];
+              return (
+                <div key={actualIdx} className="w-full md:w-1/2 flex flex-col">
+                  <PsychologyThemedCard
+                    variant={variantNumber}
+                    tagLeft={act.type || "Community"}
+                    tagRight={act.frequency || "Scheduled"}
+                    title={act.title}
+                    description={act.description}
+                    bullets={[
+                      `Format: ${act.frequency}`,
+                      "Bilingual Hindi & English dialogue",
+                      "Free public attendance & open participation"
+                    ]}
+                    meta1={{ icon: Calendar, label: act.frequency }}
+                    meta2={{ icon: Users, label: act.type }}
+                    ctaText="Participate in Drive"
+                    ctaLink="#volunteer-form"
+                    motionVariants={itemVariants}
+                    className="h-full"
+                  />
+                </div>
+              );
+            })}
+          </div>
         </motion.div>
       </section>
 
