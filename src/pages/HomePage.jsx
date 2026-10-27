@@ -82,39 +82,47 @@ export default function HomePage() {
   const paths = [
     {
       title: "I Need Support",
-      desc: "One-on-one counselling, student guidance, and small guided peer support circles.",
+      desc: "One-on-one confidential counselling, student emotional guidance, and small facilitated peer support circles.",
       badge: "CARE & COUNSELLING",
       linkText: "Explore Support Options",
       href: "/counselling",
       icon: HeartHandshake,
-      accent: "teal"
+      tags: ["Confidential Assessment", "Licensed Practitioners", "Sliding Scale Available"],
+      meta1: "Youth & Adults (Ages 13+)",
+      meta2: "Tele-Therapy & Clinic Sessions"
     },
     {
       title: "I Want to Learn or Train",
-      desc: "Psychological First Aid (PFA) and 3 supervised psychology internship tracks.",
+      desc: "Psychological First Aid (PFA) and 3 supervised psychology internship tracks with strict clinical boundaries.",
       badge: "SKILLS & INTERNSHIPS",
       linkText: "View Internship Tracks",
       href: "/internship",
       icon: GraduationCap,
-      accent: "cyan"
+      tags: ["Psychological First Aid", "3 Supervised Tracks", "Faculty Mentorship"],
+      meta1: "UG & Postgrad Scholars",
+      meta2: "Case Observation & Research"
     },
     {
       title: "Bring a Programme to My Institution",
-      desc: "Evidence-informed workshops for schools, universities, and workplace teams.",
+      desc: "Evidence-informed workshops for schools, universities, and workplace corporate wellness teams.",
       badge: "INSTITUTIONAL WORKSHOPS",
       linkText: "Explore Workshop Catalogue",
       href: "/workshops",
       icon: Building2,
-      accent: "amber"
+      tags: ["Customized Modules", "Corporate Wellness", "Campus Gatekeeper PFA"],
+      meta1: "Institutions & Workplaces",
+      meta2: "Interactive Modules & Guides"
     },
     {
       title: "I Want to Volunteer or Collaborate",
-      desc: "Community awareness drives, psychoeducation campaigns, and research inquiries.",
+      desc: "Community awareness drives, psychoeducation campaigns, and academic research collaboration.",
       badge: "COMMUNITY & INQUIRIES",
       linkText: "Get Involved",
       href: "/community",
       icon: Users,
-      accent: "emerald"
+      tags: ["Peer Support Facilitation", "Community Mental Health", "Open Research"],
+      meta1: "Advocates & Allies",
+      meta2: "Community Outreach Circles"
     }
   ];
 
@@ -244,8 +252,9 @@ export default function HomePage() {
               tagRight={`Pathway 0${idx + 1}`}
               title={p.title}
               description={p.desc}
-              meta1={{ icon: Users, label: "Individual & Cohorts" }}
-              meta2={{ icon: Monitor, label: "Online & In-Person" }}
+              tags={p.tags}
+              meta1={{ icon: Users, label: p.meta1 }}
+              meta2={{ icon: Monitor, label: p.meta2 }}
               ctaText={p.linkText}
               ctaLink={p.href}
               motionVariants={itemVariants}
