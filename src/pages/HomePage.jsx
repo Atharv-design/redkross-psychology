@@ -317,59 +317,130 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* 4. HOW SUPPORT WORKS (PDF Section 4.5) - Bidirectional Slomo Stagger */}
+      {/* 4. HOW SUPPORT WORKS (PDF Section 4.5) - Master Journey Signature Card */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 sm:p-12 rounded-3xl glass-card relative overflow-hidden">
-          <motion.div 
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={bidirectionalViewport}
-            className="text-center max-w-2xl mx-auto mb-14"
-          >
-            <span className="text-xs font-bold uppercase tracking-widest text-teal-400">
-              Ethical Process
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2 mb-3">
-              How Support Works: Our 4-Step Journey
-            </h2>
-            <p className="text-slate-300 text-sm leading-relaxed">
-              We eliminate ambiguity. Every individual receives clear communication, transparent boundary briefings, and zero pressure.
-            </p>
-          </motion.div>
+        <div className="relative overflow-hidden rounded-3xl p-8 sm:p-14 bg-[#081524]/85 backdrop-blur-2xl border border-teal-500/25 shadow-2xl shadow-black/60 group">
+          {/* Specular top border light beam */}
+          <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-teal-400/50 to-transparent pointer-events-none z-10" />
 
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={bidirectionalViewport}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative"
-          >
-            {howSupportWorks.map((step) => (
-              <motion.div 
-                key={step.step}
-                variants={itemVariants}
-                className="p-6 rounded-2xl bg-[#08121E]/60 backdrop-blur-md border border-teal-500/20 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-3xl font-black text-teal-400/40 font-mono">
+          {/* Signature Ethereal Artwork Spanning the Full-Height of the Container */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl z-0 select-none">
+            <img
+              src="/assets/cards/card-workshops-programs-fullspan.png"
+              alt=""
+              loading="lazy"
+              className="absolute right-0 top-0 bottom-0 h-full w-[55%] sm:w-[48%] object-cover object-right opacity-45 group-hover:opacity-75 transition-all duration-700 mix-blend-screen"
+            />
+            {/* Ambient Teal Glow */}
+            <div className="absolute -top-16 -right-16 w-80 h-80 bg-teal-400/15 rounded-full blur-3xl" />
+            <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-teal-600/10 rounded-full blur-3xl" />
+            {/* Smooth left-to-center dark vignette for perfect text legibility */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#071320]/95 via-[#071320]/80 to-transparent/30" />
+          </div>
+
+          {/* Content Layer */}
+          <div className="relative z-10">
+            {/* Top Badges Row */}
+            <motion.div 
+              variants={sectionVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={bidirectionalViewport}
+              className="flex flex-wrap items-center justify-between gap-3 mb-6"
+            >
+              <div className="flex items-center gap-2.5">
+                <span className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-teal-300 bg-teal-500/15 border border-teal-500/35 backdrop-blur-md shadow-sm shadow-teal-950/30">
+                  Ethical Process
+                </span>
+                <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium text-slate-300 bg-slate-800/60 border border-slate-700/60 backdrop-blur-md">
+                  4–Step Clinical Journey
+                </span>
+              </div>
+              <span className="text-xs font-mono text-teal-400/80 bg-teal-500/5 px-3 py-1 rounded-full border border-teal-500/15">
+                MHCA 2017 &amp; RCI Compliant
+              </span>
+            </motion.div>
+
+            {/* Header Text */}
+            <motion.div 
+              variants={sectionVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={bidirectionalViewport}
+              className="max-w-3xl mb-12"
+            >
+              <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight leading-tight font-royal mb-3">
+                How Support Works: Our 4-Step Journey
+              </h2>
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
+                We eliminate ambiguity. Every individual receives clear communication, transparent boundary briefings, and zero pressure at every phase.
+              </p>
+            </motion.div>
+
+            {/* Steps Timeline - Process Flow (Connected Steps, Not Boxy) */}
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={bidirectionalViewport}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative"
+            >
+              {/* Connecting line on desktop behind step badges */}
+              <div className="hidden lg:block absolute top-6 left-12 right-12 h-[2px] bg-gradient-to-r from-teal-500/30 via-teal-400/50 to-teal-500/30 z-0 pointer-events-none" />
+
+              {howSupportWorks.map((step) => (
+                <motion.div 
+                  key={step.step}
+                  variants={itemVariants}
+                  className="relative z-10 flex flex-col group/step"
+                >
+                  {/* Step Number Badge with Glowing Ring */}
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-12 h-12 rounded-2xl bg-[#06101B] border-2 border-teal-400/60 group-hover/step:border-teal-300 text-teal-300 font-mono font-bold text-base flex items-center justify-center shadow-lg shadow-teal-950/50 group-hover/step:scale-105 group-hover/step:shadow-teal-400/30 transition-all duration-300">
                       {step.step}
-                    </span>
-                    <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-teal-500/10 text-teal-300 border border-teal-500/20 font-semibold uppercase tracking-wider">
+                    </div>
+                    <span className="text-[10px] font-mono px-2.5 py-1 rounded-lg bg-teal-500/10 text-teal-300 border border-teal-500/25 font-semibold uppercase tracking-wider">
                       {step.badge}
                     </span>
                   </div>
-                  <h3 className="text-base font-bold text-white mb-2 leading-snug">
+
+                  {/* Step Title */}
+                  <h3 className="text-base sm:text-lg font-bold text-white mb-2.5 leading-snug font-royal group-hover/step:text-teal-200 transition-colors">
                     {step.title}
                   </h3>
-                  <p className="text-xs text-slate-300 leading-relaxed">
+
+                  {/* Step Description */}
+                  <p className="text-xs sm:text-sm text-slate-300/90 leading-relaxed font-light">
                     {step.description}
                   </p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Bottom Full-Width Glowing Pill CTA Action Bar (Signature Dicto Element) */}
+            <motion.div
+              variants={sectionVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={bidirectionalViewport}
+              className="mt-12 pt-6 border-t border-teal-500/15 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+            >
+              <div className="flex items-center gap-2.5 text-xs text-slate-300">
+                <CheckCircle2 className="w-4 h-4 text-teal-400 shrink-0" />
+                <span>Zero unsolicited calls • Complete data minimisation • Immediate withdrawal rights</span>
+              </div>
+
+              <Link
+                to="/counselling"
+                className="h-11 sm:h-12 px-6 rounded-full bg-gradient-to-r from-teal-500/20 via-teal-500/25 to-teal-500/30 border border-teal-500/40 hover:border-teal-300 hover:from-teal-500/35 hover:to-teal-500/50 flex items-center justify-between gap-4 transition-all duration-300 group/btn shadow-lg shadow-teal-950/50 text-xs sm:text-sm font-semibold text-teal-200 hover:text-white shrink-0"
+              >
+                <span>Initiate Confidential Enquiry</span>
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-teal-400 text-[#08121E] flex items-center justify-center font-bold shadow-md shadow-teal-400/40 group-hover/btn:translate-x-1 group-hover/btn:bg-teal-300 transition-all shrink-0">
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
 
