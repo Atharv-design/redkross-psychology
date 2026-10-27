@@ -6,11 +6,11 @@ import { Play, Pause, Volume2, VolumeX, Volume1 } from 'lucide-react';
  * Sleek, audible, and calming 528 Hz Solfeggio Healing Frequency Player.
  * Features:
  * - Pure 528 Hz harmonic tone + 4 Hz Theta binaural beat + warm Tibetan singing bowl
- * - Mastered at full 44.1kHz fidelity, clear & ear-soothing (no harshness)
- * - Immediate audible playback (default 0.72 comfortable volume)
- * - Volume control popup on hover/expand (Mute, 40%, 75%, 100%)
- * - Auto-fallback to Web Audio API synthesizer if audio file is blocked
- * - Sleek obsidian & turquoise glassmorphic pill matching RedKross Psychology theme
+ * - Mastered at 44.1kHz stereo, crystal clear & soothing
+ * - Deterministic play/pause with zero race conditions (default 72% volume)
+ * - Volume control popup on hover/expand (Mute, 40%, 72%, 100%)
+ * - Web Audio API synthesizer fallback
+ * - Obsidian & turquoise glassmorphic pill matching RedKross Psychology theme
  */
 export default function AmbienceAudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -20,7 +20,6 @@ export default function AmbienceAudioPlayer() {
 
   const audioRef = useRef(null);
   const synthRef = useRef(null);
-  const fadeIntervalRef = useRef(null);
 
   // Web Audio API Synthesizer as resilient fallback
   const startSynth = () => {
@@ -33,20 +32,19 @@ export default function AmbienceAudioPlayer() {
       // Master Gain
       const masterGain = ctx.createGain();
       const currentVol = isMuted ? 0 : volume;
-      masterGain.gain.setValueAtTime(0.01, ctx.currentTime);
-      masterGain.gain.linearRampToValueAtTime(currentVol * 0.4, ctx.currentTime + 0.6);
+      masterGain.gain.setValueAtTime(currentVol * 0.45, ctx.currentTime);
 
-      // Lowpass Filter to ensure silky smoothness (zero harsh digital edge)
+      // Lowpass Filter for silky acoustic smoothness
       const filter = ctx.createBiquadFilter();
       filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(1100, ctx.currentTime);
+      filter.frequency.setValueAtTime(1200, ctx.currentTime);
 
-      // 528 Hz Fundamental
+      // 528 Hz Fundamental (Left Ear)
       const osc528 = ctx.createOscillator();
       osc528.type = 'sine';
       osc528.frequency.setValueAtTime(528, ctx.currentTime);
 
-      // 524 Hz (4 Hz Theta Binaural Calm)
+      // 524 Hz (Right Ear - 4 Hz Theta Binaural Calm)
       const osc524 = ctx.createOscillator();
       osc524.type = 'sine';
       osc524.frequency.setValueAtTime(524, ctx.currentTime);
@@ -56,7 +54,7 @@ export default function AmbienceAudioPlayer() {
       osc264.type = 'sine';
       osc264.frequency.setValueAtTime(264, ctx.currentTime);
       const gain264 = ctx.createGain();
-      gain264.gain.setValueAtTime(0.35, ctx.currentTime);
+      gain264.gain.setValueAtTime(0.40, ctx.currentTime);
       osc264.connect(gain264);
       gain264.connect(filter);
 
@@ -65,7 +63,7 @@ export default function AmbienceAudioPlayer() {
       osc132.type = 'sine';
       osc132.frequency.setValueAtTime(132, ctx.currentTime);
       const gain132 = ctx.createGain();
-      gain132.gain.setValueAtTime(0.25, ctx.currentTime);
+      gain132.gain.setValueAtTime(0.30, ctx.currentTime);
       osc132.connect(gain132);
       gain132.connect(filter);
 
@@ -88,70 +86,34 @@ export default function AmbienceAudioPlayer() {
   const stopSynth = () => {
     if (synthRef.current) {
       try {
-        const { ctx, masterGain, oscs } = synthRef.current;
-        masterGain.gain.linearRampToValueAtTime(0.001, ctx.currentTime + 0.3);
-        setTimeout(() => {
-          oscs.forEach(o => {
-            try { o.stop(); o.disconnect(); } catch {}
-          });
-          try { ctx.close(); } catch {}
-          synthRef.current = null;
-        }, 350);
-      } catch {
-        synthRef.current = null;
-      }
+        const { ctx, oscs } = synthRef.current;
+        oscs.forEach(o => {
+          try { o.stop(); o.disconnect(); } catch {}
+        });
+        try { ctx.close(); } catch {}
+      } catch {}
+      synthRef.current = null;
     }
   };
 
-  // Smooth Volume Fading
-  const fadeAudioTo = (targetVol, durationMs = 600, onDone) => {
-    if (!audioRef.current) return;
-    if (fadeIntervalRef.current) clearInterval(fadeIntervalRef.current);
-
-    const steps = 20;
-    const stepTime = durationMs / steps;
-    const startVol = audioRef.current.volume;
-    const delta = (targetVol - startVol) / steps;
-    let step = 0;
-
-    fadeIntervalRef.current = setInterval(() => {
-      if (!audioRef.current) {
-        clearInterval(fadeIntervalRef.current);
-        return;
-      }
-      step++;
-      const nextVol = Math.max(0, Math.min(1, startVol + delta * step));
-      audioRef.current.volume = nextVol;
-
-      if (step >= steps) {
-        clearInterval(fadeIntervalRef.current);
-        audioRef.current.volume = targetVol;
-        if (onDone) onDone();
-      }
-    }, stepTime);
-  };
-
-  // Toggle Play / Pause
+  // Toggle Play / Pause - Deterministic and instant
   const togglePlay = () => {
     const audio = audioRef.current;
     if (!audio) return;
 
     if (isPlaying) {
-      fadeAudioTo(0, 500, () => {
-        if (audioRef.current) audioRef.current.pause();
-        stopSynth();
-        setIsPlaying(false);
-      });
+      audio.pause();
+      stopSynth();
+      setIsPlaying(false);
     } else {
       const targetVol = isMuted ? 0 : volume;
-      audio.volume = 0.2;
+      audio.volume = targetVol;
       audio.play()
         .then(() => {
           setIsPlaying(true);
-          fadeAudioTo(targetVol, 600);
         })
         .catch((err) => {
-          console.warn('HTML5 audio play blocked, attempting Web Audio API fallback:', err);
+          console.warn('HTML5 audio play blocked, starting Web Audio API fallback:', err);
           startSynth();
           setIsPlaying(true);
         });
@@ -167,7 +129,7 @@ export default function AmbienceAudioPlayer() {
     }
     if (synthRef.current) {
       const { ctx, masterGain } = synthRef.current;
-      masterGain.gain.setValueAtTime(newVol * 0.4, ctx.currentTime);
+      masterGain.gain.setValueAtTime(newVol * 0.45, ctx.currentTime);
     }
   };
 
@@ -176,7 +138,7 @@ export default function AmbienceAudioPlayer() {
     e.stopPropagation();
     if (isMuted) {
       setIsMuted(false);
-      handleVolumeChange(volume || 0.72);
+      handleVolumeChange(volume > 0 ? volume : 0.72);
     } else {
       setIsMuted(true);
       if (audioRef.current) audioRef.current.volume = 0;
@@ -187,32 +149,10 @@ export default function AmbienceAudioPlayer() {
     }
   };
 
-  // Gentle auto-start attempt on first page interaction
+  // Cleanup on unmount
   useEffect(() => {
-    const onFirstUserAction = () => {
-      if (audioRef.current && audioRef.current.paused) {
-        audioRef.current.volume = 0.15;
-        audioRef.current.play()
-          .then(() => {
-            setIsPlaying(true);
-            fadeAudioTo(0.65, 1200);
-          })
-          .catch(() => {
-            // Browser blocked autoplay, awaiting direct button click
-          });
-      }
-      window.removeEventListener('click', onFirstUserAction);
-      window.removeEventListener('touchstart', onFirstUserAction);
-    };
-
-    window.addEventListener('click', onFirstUserAction, { once: true });
-    window.addEventListener('touchstart', onFirstUserAction, { once: true });
-
     return () => {
-      if (fadeIntervalRef.current) clearInterval(fadeIntervalRef.current);
       stopSynth();
-      window.removeEventListener('click', onFirstUserAction);
-      window.removeEventListener('touchstart', onFirstUserAction);
     };
   }, []);
 
@@ -222,7 +162,7 @@ export default function AmbienceAudioPlayer() {
       onMouseEnter={() => setShowVolumeSlider(true)}
       onMouseLeave={() => setShowVolumeSlider(false)}
     >
-      {/* Hidden Native Audio Element */}
+      {/* Native HTML5 Audio Element with Loop */}
       <audio
         ref={audioRef}
         src="/assets/528hz-healing-ambience.wav"
@@ -232,9 +172,9 @@ export default function AmbienceAudioPlayer() {
         onPause={() => setIsPlaying(false)}
       />
 
-      {/* Volume Slider Card on Hover */}
+      {/* Volume Slider Card on Hover / Tap */}
       {showVolumeSlider && (
-        <div className="absolute bottom-full right-0 mb-2 p-3 rounded-2xl bg-[#06101B]/95 backdrop-blur-2xl border border-teal-500/35 shadow-2xl shadow-black/80 flex flex-col gap-2 min-w-[170px] animate-in fade-in slide-in-from-bottom-2 duration-200">
+        <div className="absolute bottom-full right-0 mb-2 p-3 rounded-2xl bg-[#06101B]/95 backdrop-blur-2xl border border-teal-500/35 shadow-2xl shadow-black/80 flex flex-col gap-2 min-w-[175px] animate-in fade-in slide-in-from-bottom-2 duration-200">
           <div className="flex items-center justify-between text-[11px] font-royal uppercase tracking-wider text-slate-300">
             <span className="text-teal-300 font-bold">Volume</span>
             <span>{isMuted ? 'Muted' : `${Math.round(volume * 100)}%`}</span>
@@ -306,7 +246,7 @@ export default function AmbienceAudioPlayer() {
         {/* Dynamic Label & Animated Equalizer Bars */}
         <div className="flex items-center gap-2.5 pr-1">
           <span className="font-royal text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent group-hover:from-white group-hover:to-teal-200 transition-all">
-            {isPlaying ? "528 Hz Healing" : "Play 528 Hz"}
+            {isPlaying ? "528 Hz Playing" : "Play 528 Hz Sound"}
           </span>
 
           {/* Equalizer Sound Waves */}
