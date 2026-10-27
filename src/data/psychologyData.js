@@ -33,6 +33,81 @@ export const PSYCHOLOGY_DATA = {
     }
   },
 
+  // About RedKross Psychology (PDF Section 5.1 & Section 1)
+  about: {
+    origin: {
+      headline: "From Technology Research to Community Mental Wellbeing",
+      story: "RedKross began its journey as a technology and cybersecurity research organisation grounded in a singular belief: technical knowledge and scientific inquiry must directly serve human dignity and societal resilience. As our teams worked across digital literacy and institutional research, we witnessed first-hand the escalating, unaddressed crisis of emotional burnout, student examination anxiety, caregiver isolation, and deep cultural stigma surrounding mental health. The psychology wing emerged organically from this realization—not as a commercial wellness brand, but as an ethical, evidence-informed institutional response dedicated to accessible, stigma-free mental health support.",
+      institutionalBacking: "RedKross Psychology operates as the dedicated mental wellbeing division of RedKross Research Foundation, a registered Section 8 non-profit research institution (CIN: U85499HR2026NPL144741). All clinical, educational, and outreach activities operate under formal institutional governance, research integrity standards, and non-profit ethics."
+    },
+    mission: "To demystify mental health, expand compassionate access, eliminate cultural stigma, and build community-level psychological literacy through ethical, evidence-informed care, responsible training, and transparent governance.",
+    vision: "An inclusive society where mental wellbeing is afforded the same dignity, care, and accessibility as physical health—free from shame, predatory commercialisation, and false clinical promises.",
+    values: [
+      {
+        id: "confidentiality-boundaries",
+        name: "Confidentiality Within Clear Boundaries",
+        principle: "Honest Trust Over Absolute Promises",
+        description: "We protect personal privacy rigorously, yet we never make irresponsible promises such as 'confidential always.' Every client is informed upfront of the strict legal and ethical limits of confidentiality: imminent risk of life or self-harm, danger to others, or child safeguarding requirements."
+      },
+      {
+        id: "access-affordability",
+        name: "Access & Affordability",
+        principle: "Care Dignity Beyond Ability to Pay",
+        description: "Mental health care should not be a luxury reserved for the affluent. We offer transparent standard contributions, dedicated sliding-scale slots for students and low-income individuals, and free community psychoeducation camps."
+      },
+      {
+        id: "evidence-over-fads",
+        name: "Evidence Over Fads",
+        principle: "Scientific Grounding, Zero Miracle Cures",
+        description: "Our workshops, psychoeducation materials, and support frameworks are rooted in empirical psychological science and internationally recognized guidelines. We strictly avoid pseudoscience, predatory wellness trends, and unfounded guarantees."
+      },
+      {
+        id: "local-capacity",
+        name: "Building Local Capacity",
+        principle: "Sustainable Grassroots Resilience",
+        description: "True mental wellbeing cannot rely solely on isolated clinics. We train teachers, student leaders, hostel wardens, and community volunteers in Psychological First Aid (PFA) and peer listening, fostering sustainable frontline resilience."
+      },
+      {
+        id: "stigma-free-care",
+        name: "Stigma-Free, Respectful Care",
+        principle: "Non-Judgmental Human Dignity",
+        description: "We meet every person where they are, without clinical condescension, cultural bias, or moral judgment. Our programmes support bilingual dialogue (Hindi and English) to dismantle barriers across diverse socioeconomic backgrounds."
+      },
+      {
+        id: "transparency-accountability",
+        name: "Transparency & Governance",
+        principle: "Auditable Ethics & Realistic Claims",
+        description: "We reject deceptive metrics such as inflated reach counters or fabricated testimonials. We communicate our capacity, practitioner credentials, and service limits with complete institutional honesty."
+      }
+    ],
+    governance: {
+      headline: "Clinical Governance & Operational Boundaries",
+      description: "Mental health support carries profound ethical responsibility. RedKross Psychology enforces strict clinical boundaries to ensure safe, accountable, and legally sound services.",
+      roles: [
+        {
+          role: "Qualified Counsellors & Therapists",
+          scope: "Conduct individual, student, and career counselling sessions; facilitate structured support groups under regular clinical supervision.",
+          credentials: "Masters or Post-Graduate degrees in Psychology / Counselling Psychology with verified practicum credentials."
+        },
+        {
+          role: "Clinical Psychologists & Specialists",
+          scope: "Supervise case reviews, provide specialized psychometric oversight, and guide complex psychological interventions.",
+          credentials: "Licensed or RCI-recognized clinical psychologists with accredited post-graduate clinical training."
+        },
+        {
+          role: "Psychiatric Medical Referral Network",
+          scope: "RedKross Psychology does NOT prescribe medication or operate inpatient psychiatric facilities. Cases requiring medical pharmacotherapy are ethically referred to accredited government or private psychiatric hospitals.",
+          credentials: "External verified medical doctors (MBBS, MD/DNB Psychiatry)."
+        },
+        {
+          role: "Student Interns & Community Volunteers",
+          scope: "Engage strictly in psychoeducation design, literature synthesis, and supervised event coordination. Interns NEVER diagnose, provide independent clinical therapy, or access confidential client records.",
+          credentials: "Undergraduate / Postgraduate psychology students operating under continuous faculty supervision."
+        }
+      ]
+    }
+  },
+
   // 2. Critical Safety & Emergency Helplines (PDF Section 6 & 1)
   // MANDATORY: Non-negotiable crisis guidance. The site is NOT an emergency service.
   emergency: {

@@ -6,6 +6,7 @@ import PsychologyFooter from './components/PsychologyFooter';
 
 // Pages
 import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
 import PagePlaceholder from './pages/PagePlaceholder';
 
 function ScrollToTop() {
@@ -31,7 +32,7 @@ export default function App() {
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<PagePlaceholder title="About RedKross Psychology" category="ORGANISATIONAL ORIGIN & ETHICS" description="The origin, mission, values, and ethical governance of RedKross Research Foundation's psychology wing." />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<PagePlaceholder title="Programmes & Support" category="COMPREHENSIVE PROGRAMME INVENTORY" description="Overview of the 6 core programmes: Counselling, Support Groups, Outreach, PFA, and Research." />} />
           <Route path="/counselling" element={<PagePlaceholder title="Counselling Enquiries" category="CONFIDENTIAL CARE WITHIN BOUNDARIES" description="Information on individual and student/career counselling, session structures, and ethical intake." />} />
           <Route path="/support-groups" element={<PagePlaceholder title="Facilitated Support Groups" category="PEER SPACES & GUIDED DIALOGUES" description="Small closed peer circles for grief, caregiver stress, and young-adult wellbeing." />} />
