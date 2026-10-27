@@ -18,31 +18,7 @@ import {
 import { PSYCHOLOGY_DATA } from '../data/psychologyData';
 import PsychologyThemedCard from '@/components/ui/PsychologyThemedCard';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.05
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 20
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.45,
-      ease: [0.22, 1, 0.36, 1]
-    }
-  }
-};
+import { bidirectionalViewport, containerVariants, itemVariants, sectionVariants } from '../utils/animationConfig';
 
 export default function ContactPage() {
   const { identity, emergency } = PSYCHOLOGY_DATA;
@@ -174,7 +150,13 @@ export default function ContactPage() {
 
       {/* The 4 Signature Desks using PsychologyThemedCard */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="text-center max-w-3xl mx-auto mb-14 space-y-3"
+        >
           <div className="inline-flex items-center gap-2 text-teal-400 text-xs font-mono uppercase tracking-widest">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>Dedicated Desks</span>
@@ -185,12 +167,12 @@ export default function ContactPage() {
           <p className="text-sm sm:text-base text-slate-300/85">
             Your inquiry is routed directly to the appropriate team member to ensure prompt and confidential attention.
           </p>
-        </div>
+        </motion.div>
 
         <motion.div 
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2, margin: "0px 0px -40px 0px" }}
+          viewport={bidirectionalViewport}
           variants={containerVariants}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto"
         >
@@ -219,7 +201,12 @@ export default function ContactPage() {
 
       {/* Institutional Registered Entity Box */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-10 max-w-5xl mx-auto">
-        <div className="rounded-3xl p-8 sm:p-10 bg-gradient-to-b from-[#091522]/90 to-[#060D17]/95 backdrop-blur-2xl border border-teal-500/30">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="rounded-3xl p-8 sm:p-10 bg-gradient-to-b from-[#091522]/90 to-[#060D17]/95 backdrop-blur-2xl border border-teal-500/30">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="space-y-2">
               <span className="text-[11px] font-mono text-teal-400 font-semibold uppercase tracking-wider block">
@@ -259,12 +246,17 @@ export default function ContactPage() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* General Inquiry Routing Form with Signature Themed Card Motif */}
       <section id="contact-form" className="relative px-4 sm:px-6 lg:px-8 py-16 max-w-4xl mx-auto">
-        <div className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 shadow-2xl relative overflow-hidden group">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 shadow-2xl relative overflow-hidden group">
           {/* Signature Themed Card Background Artwork */}
           <div 
             className="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-luminosity group-hover:opacity-25 transition-opacity duration-700 pointer-events-none scale-105"
@@ -424,7 +416,7 @@ export default function ContactPage() {
             </form>
           )}
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

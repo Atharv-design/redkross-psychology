@@ -18,31 +18,7 @@ import {
 import { PSYCHOLOGY_DATA } from '../data/psychologyData';
 import PsychologyThemedCard from '@/components/ui/PsychologyThemedCard';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.05
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 20
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.45,
-      ease: [0.22, 1, 0.36, 1]
-    }
-  }
-};
+import { bidirectionalViewport, containerVariants, itemVariants, sectionVariants } from '../utils/animationConfig';
 
 export default function WorkshopsPage() {
   const { workshops } = PSYCHOLOGY_DATA;
@@ -132,7 +108,13 @@ export default function WorkshopsPage() {
 
       {/* The 6 Signature Workshop Modules */}
       <section id="modules" className="relative px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="text-center max-w-3xl mx-auto mb-14 space-y-3"
+        >
           <div className="inline-flex items-center gap-2 text-teal-400 text-xs font-mono uppercase tracking-widest">
             <BookOpen className="w-3.5 h-3.5" />
             <span>Curriculum Inventory</span>
@@ -143,12 +125,12 @@ export default function WorkshopsPage() {
           <p className="text-sm sm:text-base text-slate-300/85">
             Tailored for specific institutional audiences with verifiable learning outcomes and certified participation.
           </p>
-        </div>
+        </motion.div>
 
         <motion.div 
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={bidirectionalViewport}
           variants={containerVariants}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
@@ -176,7 +158,12 @@ export default function WorkshopsPage() {
 
       {/* Institutional Booking Request Form with Signature Themed Card Motif */}
       <section id="booking-form" className="relative px-4 sm:px-6 lg:px-8 py-16 max-w-4xl mx-auto">
-        <div className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 shadow-2xl relative overflow-hidden group">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 shadow-2xl relative overflow-hidden group">
           {/* Signature Themed Card Background Artwork */}
           <div 
             className="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-luminosity group-hover:opacity-25 transition-opacity duration-700 pointer-events-none scale-105"
@@ -368,7 +355,7 @@ export default function WorkshopsPage() {
             </form>
           )}
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

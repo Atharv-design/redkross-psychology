@@ -20,31 +20,7 @@ import { PSYCHOLOGY_DATA } from '../data/psychologyData';
 import PsychologyThemedCard from '@/components/ui/PsychologyThemedCard';
 import FrequentlyAskedQuestions from '@/components/ui/frequently-asked-questions-with-accordion';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.05
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 20
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.45,
-      ease: [0.22, 1, 0.36, 1]
-    }
-  }
-};
+import { bidirectionalViewport, containerVariants, itemVariants, sectionVariants } from '../utils/animationConfig';
 
 export default function ResourcesPage() {
   const { emergency, faqs } = PSYCHOLOGY_DATA;
@@ -216,7 +192,13 @@ export default function ResourcesPage() {
 
       {/* 24/7 Verified Emergency Helplines Directory */}
       <section id="helplines" className="relative px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="text-center max-w-3xl mx-auto mb-14 space-y-3"
+        >
           <div className="inline-flex items-center gap-2 text-red-400 text-xs font-mono uppercase tracking-widest">
             <AlertTriangle className="w-3.5 h-3.5" />
             <span>Crisis Intervention Directory</span>
@@ -227,9 +209,15 @@ export default function ResourcesPage() {
           <p className="text-sm sm:text-base text-slate-300/85">
             If you or someone you know is in acute distress or experiencing thoughts of self-harm, please connect immediately with these verified toll-free resources.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+        >
           {nationalHelplines.map((hl, hidx) => (
             <PsychologyThemedCard
               key={hidx}
@@ -250,7 +238,7 @@ export default function ResourcesPage() {
               motionVariants={itemVariants}
             />
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Feathered Divider */}
@@ -260,7 +248,13 @@ export default function ResourcesPage() {
 
       {/* Downloadable Guides & Psychoeducation using PsychologyThemedCard */}
       <section id="guides" className="relative px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="text-center max-w-3xl mx-auto mb-14 space-y-3"
+        >
           <div className="inline-flex items-center gap-2 text-teal-400 text-xs font-mono uppercase tracking-widest">
             <Download className="w-3.5 h-3.5" />
             <span>Curated Evidence-Informed Toolkits</span>
@@ -271,12 +265,12 @@ export default function ResourcesPage() {
           <p className="text-sm sm:text-base text-slate-300/85">
             Designed by psychology researchers and counsellors. Free to read, print, and share for educational non-commercial purposes.
           </p>
-        </div>
+        </motion.div>
 
         <motion.div 
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={bidirectionalViewport}
           variants={containerVariants}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
@@ -310,12 +304,19 @@ export default function ResourcesPage() {
 
       {/* FAQ Accordion Component */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-16 max-w-5xl mx-auto">
-        <FrequentlyAskedQuestions 
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+        >
+          <FrequentlyAskedQuestions 
           title="FREQUENTLY ASKED CLINICAL & ACCESS QUESTIONS"
           description="Straightforward answers regarding confidentiality boundaries, sliding scale fees, adolescent consent, and workshop scheduling."
           supportEmail="support@redkross.org.in"
           data={faqs.map(f => ({ question: f.q, answer: f.a }))}
         />
+        </motion.div>
       </section>
     </div>
   );

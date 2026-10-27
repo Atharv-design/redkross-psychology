@@ -17,31 +17,7 @@ import {
 import { PSYCHOLOGY_DATA } from '../data/psychologyData';
 import PsychologyThemedCard from '@/components/ui/PsychologyThemedCard';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.05
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 20
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.45,
-      ease: [0.22, 1, 0.36, 1]
-    }
-  }
-};
+import { bidirectionalViewport, containerVariants, itemVariants, sectionVariants } from '../utils/animationConfig';
 
 export default function CommunityPage() {
   const { communityActivities } = PSYCHOLOGY_DATA;
@@ -127,7 +103,13 @@ export default function CommunityPage() {
 
       {/* The 5 Community Initiatives using PsychologyThemedCard */}
       <section id="initiatives" className="relative px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="text-center max-w-3xl mx-auto mb-14 space-y-3"
+        >
           <div className="inline-flex items-center gap-2 text-teal-400 text-xs font-mono uppercase tracking-widest">
             <Sun className="w-3.5 h-3.5" />
             <span>Active Community Drives</span>
@@ -138,17 +120,17 @@ export default function CommunityPage() {
           <p className="text-sm sm:text-base text-slate-300/85">
             Non-commercial, culturally respectful, and delivered in bilingual Hindi-English formats to ensure true grassroots accessibility.
           </p>
-        </div>
+        </motion.div>
 
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={containerVariants}
-          className="space-y-6 sm:space-y-8"
-        >
+        <div className="space-y-6 sm:space-y-8">
           {/* Top 3 Cards in 3-column row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={bidirectionalViewport}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          >
             {communityActivities.slice(0, 3).map((act, idx) => {
               const variantNumber = communityMotifs[idx % communityMotifs.length];
               return (
@@ -172,10 +154,16 @@ export default function CommunityPage() {
                 />
               );
             })}
-          </div>
+          </motion.div>
 
           {/* Bottom 2 Cards (Mindful Morning Sessions & World Mental Health Day) Centered in Row */}
-          <div className="flex flex-col md:flex-row justify-center items-stretch gap-6 sm:gap-8 max-w-4xl mx-auto">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={bidirectionalViewport}
+            className="flex flex-col md:flex-row justify-center items-stretch gap-6 sm:gap-8 max-w-4xl mx-auto"
+          >
             {communityActivities.slice(3, 5).map((act, idx) => {
               const actualIdx = idx + 3;
               const variantNumber = communityMotifs[actualIdx % communityMotifs.length];
@@ -202,13 +190,19 @@ export default function CommunityPage() {
                 </div>
               );
             })}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Community Charter - 2x2 Grid with Signature Themed Cards */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-16 max-w-5xl mx-auto">
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="text-center max-w-2xl mx-auto mb-10 space-y-2"
+        >
           <ShieldCheck className="w-8 h-8 text-teal-400 mx-auto" />
           <h3 className="text-xl sm:text-3xl font-royal font-bold uppercase tracking-tight bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
             COMMUNITY CIRCLE SAFEGUARDING CHARTER
@@ -216,9 +210,15 @@ export default function CommunityPage() {
           <p className="text-xs sm:text-sm text-slate-300/80 font-sans">
             Every peer circle and public gathering operates under four non-negotiable community values.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto"
+        >
           {[
             {
               title: "Radical Empathy",
@@ -264,12 +264,17 @@ export default function CommunityPage() {
               motionVariants={itemVariants}
             />
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Volunteer Registration Form with Signature Themed Card Motif */}
       <section id="volunteer-form" className="relative px-4 sm:px-6 lg:px-8 py-16 max-w-4xl mx-auto">
-        <div className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 shadow-2xl relative overflow-hidden group">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 shadow-2xl relative overflow-hidden group">
           {/* Signature Themed Card Background Artwork */}
           <div 
             className="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-luminosity group-hover:opacity-25 transition-opacity duration-700 pointer-events-none scale-105"
@@ -413,7 +418,7 @@ export default function CommunityPage() {
             </form>
           )}
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

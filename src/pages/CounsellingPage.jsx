@@ -20,31 +20,7 @@ import {
 import { PSYCHOLOGY_DATA } from '../data/psychologyData';
 import PsychologyThemedCard from '@/components/ui/PsychologyThemedCard';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.05
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 20
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.45,
-      ease: [0.22, 1, 0.36, 1]
-    }
-  }
-};
+import { bidirectionalViewport, containerVariants, itemVariants, sectionVariants } from '../utils/animationConfig';
 
 export default function CounsellingPage() {
   const { howSupportWorks, accessAndAffordability, trustAndSafety } = PSYCHOLOGY_DATA;
@@ -134,7 +110,13 @@ export default function CounsellingPage() {
 
       {/* Signature Themed Cards for Counselling Pathways */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="text-center max-w-3xl mx-auto mb-14 space-y-3"
+        >
           <div className="inline-flex items-center gap-2 text-teal-400 text-xs font-mono uppercase tracking-widest">
             <HeartHandshake className="w-3.5 h-3.5" />
             <span>Personalised Modalities</span>
@@ -145,9 +127,15 @@ export default function CounsellingPage() {
           <p className="text-sm sm:text-base text-slate-300/85">
             Every individual is unique. We integrate evidence-based approaches (CBT, ACT, Person-Centered & Somatic Grounding) mapped to your specific goals.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto"
+        >
           <PsychologyThemedCard
             variant={1}
             tagLeft="Individual Care"
@@ -163,6 +151,7 @@ export default function CounsellingPage() {
             meta2={{ icon: Clock, label: "Online / In-Person" }}
             ctaText="Request Intake"
             ctaLink="#intake-form"
+            motionVariants={itemVariants}
           />
 
           <PsychologyThemedCard
@@ -180,6 +169,7 @@ export default function CounsellingPage() {
             meta2={{ icon: Sparkles, label: "Subsidised Rates" }}
             ctaText="Student Intake"
             ctaLink="#intake-form"
+            motionVariants={itemVariants}
           />
 
           <PsychologyThemedCard
@@ -197,6 +187,7 @@ export default function CounsellingPage() {
             meta2={{ icon: FileCheck, label: "Tailored Plans" }}
             ctaText="Read Methodologies"
             ctaLink="#intake-form"
+            motionVariants={itemVariants}
           />
 
           <PsychologyThemedCard
@@ -214,8 +205,9 @@ export default function CounsellingPage() {
             meta2={{ icon: CheckCircle2, label: "Verified Psychologists" }}
             ctaText="Schedule Session"
             ctaLink="#intake-form"
+            motionVariants={itemVariants}
           />
-        </div>
+        </motion.div>
       </section>
 
       {/* Feathered Divider */}
@@ -225,7 +217,13 @@ export default function CounsellingPage() {
 
       {/* 4-Step Patient Journey - 2x2 Grid with Signature Themed Cards */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="text-center max-w-3xl mx-auto mb-14 space-y-3"
+        >
           <div className="inline-flex items-center gap-2 text-teal-400 text-xs font-mono uppercase tracking-widest">
             <Clock className="w-3.5 h-3.5" />
             <span>The Care Journey</span>
@@ -236,9 +234,15 @@ export default function CounsellingPage() {
           <p className="text-sm sm:text-base text-slate-300/85">
             Transparent, predictable, and pressure-free. We eliminate confusion at every step of your intake.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto"
+        >
           {howSupportWorks.map((step, idx) => (
             <PsychologyThemedCard
               key={idx}
@@ -259,12 +263,17 @@ export default function CounsellingPage() {
               motionVariants={itemVariants}
             />
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Confidentiality Limits Section with Signature Motif */}
       <section id="boundaries" className="relative px-4 sm:px-6 lg:px-8 py-16 max-w-7xl mx-auto">
-        <div className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 relative overflow-hidden group shadow-2xl">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 relative overflow-hidden group shadow-2xl">
           {/* Signature Motif Background */}
           <div 
             className="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-luminosity group-hover:opacity-25 transition-opacity duration-700 pointer-events-none scale-105"
@@ -306,12 +315,17 @@ export default function CounsellingPage() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Interactive Intake Enquiry Form with Signature Motif */}
       <section id="intake-form" className="relative px-4 sm:px-6 lg:px-8 py-16 max-w-4xl mx-auto">
-        <div className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 shadow-2xl relative overflow-hidden group">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="rounded-3xl p-8 sm:p-12 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/35 hover:border-teal-400/60 shadow-2xl relative overflow-hidden group">
           {/* Signature Motif Background */}
           <div 
             className="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-luminosity group-hover:opacity-25 transition-opacity duration-700 pointer-events-none scale-105"
@@ -486,7 +500,7 @@ export default function CounsellingPage() {
             </form>
           )}
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

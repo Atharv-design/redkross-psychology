@@ -26,31 +26,7 @@ import {
 import { PSYCHOLOGY_DATA } from '../data/psychologyData';
 import PsychologyThemedCard from '@/components/ui/PsychologyThemedCard';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.05
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 20
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.45,
-      ease: [0.22, 1, 0.36, 1]
-    }
-  }
-};
+import { bidirectionalViewport, containerVariants, itemVariants, sectionVariants } from '../utils/animationConfig';
 
 export default function ServicesPage() {
   const { programmes, accessAndAffordability } = PSYCHOLOGY_DATA;
@@ -158,7 +134,13 @@ export default function ServicesPage() {
 
       {/* Core 6 Programmes Showcase using PsychologyThemedCard */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="text-center max-w-3xl mx-auto mb-14 space-y-3"
+        >
           <div className="inline-flex items-center gap-2 text-teal-400 text-xs font-mono uppercase tracking-widest">
             <Activity className="w-3.5 h-3.5" />
             <span>Comprehensive Pathways</span>
@@ -169,12 +151,12 @@ export default function ServicesPage() {
           <p className="text-sm sm:text-base text-slate-300/85">
             Designed for different stages of emotional need, with distinct practitioner oversight and transparent boundaries.
           </p>
-        </div>
+        </motion.div>
 
         <motion.div 
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={bidirectionalViewport}
           variants={containerVariants}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
@@ -211,7 +193,13 @@ export default function ServicesPage() {
 
       {/* Stepped Care Framework */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="text-center max-w-3xl mx-auto mb-14 space-y-3"
+        >
           <div className="inline-flex items-center gap-2 text-teal-400 text-xs font-mono uppercase tracking-widest">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>Clinical Stepped-Care Architecture</span>
@@ -222,9 +210,15 @@ export default function ServicesPage() {
           <p className="text-sm sm:text-base text-slate-300/85">
             We adhere to a stepped-care philosophy: interventions should be least invasive, evidence-informed, and seamlessly escalated when deeper clinical attention is required.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto"
+        >
           {steppedCareLevels.map((lvl, index) => (
             <PsychologyThemedCard
               key={index}
@@ -245,12 +239,18 @@ export default function ServicesPage() {
               motionVariants={itemVariants}
             />
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Transparent Fee & Community Subsidies Section - Crystal Clear 2x2 Grid */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="text-center max-w-3xl mx-auto mb-14 space-y-3"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-950/80 text-teal-300 border border-teal-500/40 text-xs font-mono tracking-wider">
             <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
             <span>SECTION 8 NON-PROFIT COMMITMENT // FINANCIAL TRANSPARENCY</span>
@@ -261,10 +261,16 @@ export default function ServicesPage() {
           <p className="text-sm sm:text-base text-slate-200 font-sans leading-relaxed max-w-2xl mx-auto">
             {accessAndAffordability.statement} We operate with strict financial transparency and verified institutional sliding scales for students and economically challenged applicants.
           </p>
-        </div>
+        </motion.div>
 
         {/* 2x2 Grid of the 4 Principles with Pristine Contrast & Signature Motif */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto mb-12">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto mb-12"
+        >
           {accessAndAffordability.principles.map((pr, pidx) => (
             <PsychologyThemedCard
               key={pidx}
@@ -285,10 +291,16 @@ export default function ServicesPage() {
               motionVariants={itemVariants}
             />
           ))}
-        </div>
+        </motion.div>
 
         {/* High-Impact Horizontal Intake & Emergency Notice Banner */}
-        <div className="max-w-5xl mx-auto rounded-3xl p-6 sm:p-10 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/40 shadow-2xl relative overflow-hidden group">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={bidirectionalViewport}
+          className="max-w-5xl mx-auto rounded-3xl p-6 sm:p-10 bg-[#091522]/95 backdrop-blur-2xl border border-teal-500/40 shadow-2xl relative overflow-hidden group"
+        >
           <div 
             className="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-luminosity group-hover:opacity-25 transition-opacity duration-700 pointer-events-none scale-105"
             style={{ backgroundImage: `url('/assets/cards/card-book-appointment-fullspan.png')` }}
@@ -320,7 +332,7 @@ export default function ServicesPage() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
