@@ -17,7 +17,8 @@ import {
   FileText,
   UserCheck,
   Stethoscope,
-  GraduationCap
+  GraduationCap,
+  Monitor
 } from 'lucide-react';
 import { PSYCHOLOGY_DATA } from '../data/psychologyData';
 import PsychologyThemedCard from '@/components/ui/PsychologyThemedCard';

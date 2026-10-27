@@ -16,7 +16,8 @@ import {
   ExternalLink,
   HelpCircle,
   AlertTriangle,
-  Lightbulb
+  Lightbulb,
+  Monitor
 } from 'lucide-react';
 import { PSYCHOLOGY_DATA } from '../data/psychologyData';
 import FrequentlyAskedQuestions from '@/components/ui/frequently-asked-questions-with-accordion';
