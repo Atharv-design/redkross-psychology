@@ -2734,11 +2734,11 @@ const CSS =
 
   ".dcf-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}" +
 
-  ".dcf-btn{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 20px 0 16px;border-radius:999px;border:2px solid var(--dcf-ink);font-size:14.5px;font-weight:750;letter-spacing:-.01em;box-shadow:0 3px 0 var(--dcf-ink);transition:transform .18s cubic-bezier(.3,1.4,.5,1),box-shadow .18s cubic-bezier(.3,1.4,.5,1)}" +
+  ".dcf-btn{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 22px 0 18px;border-radius:999px;font-family:'Cinzel',serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;transition:all .3s cubic-bezier(.16,1,.3,1)}" +
 
-  ".dcf-btn.is-outline{background:rgba(14,14,22,.85);color:#f9fafb;border:2px solid rgba(229,122,0,.5);backdrop-filter:blur(8px)}" +
+  ".dcf-btn.is-outline{background:rgba(8,18,30,.85);color:#5EEAD4;border:1.5px solid rgba(45,212,191,.4);backdrop-filter:blur(14px);box-shadow:0 4px 15px rgba(0,0,0,.4)}" +
 
-  ".dcf-btn.is-solid{background:linear-gradient(135deg,#0284C7 0%,#00F0FF 100%);color:#03060A;border:2px solid #00F0FF;box-shadow:0 4px 18px rgba(0,240,255,.4);font-weight:700}" +
+  ".dcf-btn.is-solid{background:linear-gradient(135deg,rgba(45,212,191,0.2) 0%,rgba(13,148,136,0.35) 100%);color:#F0FDFA;border:1.5px solid #2DD4BF;box-shadow:0 0 20px rgba(45,212,191,.35);font-family:'Cinzel',serif;font-weight:700;letter-spacing:.05em}" +
 
   ".dcf-btn.is-solid .dcf-icon{stroke:var(--dcf-bg)}" +
 

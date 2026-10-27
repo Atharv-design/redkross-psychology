@@ -4,54 +4,69 @@ import { ShieldCheck, ExternalLink, Heart } from 'lucide-react';
 import { PSYCHOLOGY_DATA } from '../data/psychologyData';
 import DoodleCrewFooter from './ui/doodle-crew-footer-psychology';
 
+/**
+ * PsychologyFooter
+ * Frosted Glassmorphic Footer seamlessly blended with upper sections.
+ * Features:
+ * - Zero hard horizontal top border line (soft vertical gradient mask)
+ * - Ambient radial turquoise light bloom for organic seamless transition
+ * - Floating glassmorphic emergency crisis guidance card
+ * - Feathered specular dividers that naturally fade to zero opacity at edges
+ * - Royal Cinzel typography with radiant turquoise-to-white color blend
+ * - Interactive Doodle Crew brandmark with cute characters
+ */
 export default function PsychologyFooter() {
   const { identity, emergency } = PSYCHOLOGY_DATA;
 
   return (
-    <footer className="w-full bg-[#08121E]/90 backdrop-blur-2xl border-t border-teal-500/20 text-slate-400 font-sans select-none relative z-20">
+    <footer className="w-full relative z-20 select-none text-slate-400 font-sans overflow-hidden bg-gradient-to-b from-transparent via-[#060D17]/85 to-[#040810]/98 backdrop-blur-3xl pt-8 sm:pt-16">
       
-      {/* Top Banner in Footer: Crisis Reminder (Glassmorphic) */}
-      <div className="border-b border-amber-500/25 bg-[#08121E]/70 backdrop-blur-xl px-4 py-4">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-amber-200/90">
-          <div className="flex items-center gap-2 text-center md:text-left">
-            <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
-            <span>
-              <strong>Emergency Guidance:</strong> If you are experiencing acute distress or self-harm thoughts, please reach out to national 24×7 crisis helplines immediately.
+      {/* Ambient Ethereal Teal Light Bloom - Seamless blend with preceding section */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-48 bg-gradient-to-b from-teal-500/10 via-teal-500/5 to-transparent blur-3xl pointer-events-none -z-10" />
+
+      {/* Integrated Floating Crisis Guidance Glass Card (Organic & Non-Linear, Zero Full-Width Hard Lines) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
+        <div className="p-4 sm:p-5 rounded-2xl bg-[#06101B]/80 backdrop-blur-2xl border border-amber-400/25 shadow-xl shadow-black/40 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-amber-200/90">
+          <div className="flex items-center gap-3 text-center md:text-left">
+            <div className="w-8 h-8 rounded-xl bg-amber-500/15 border border-amber-400/35 flex items-center justify-center shrink-0 shadow-sm">
+              <ShieldCheck className="w-4 h-4 text-amber-400" />
+            </div>
+            <span className="leading-relaxed">
+              <strong className="font-royal text-amber-300 tracking-wider uppercase text-[11px] block sm:inline mr-1.5">Immediate Crisis Guidance:</strong>
+              If you or someone you know is in acute distress, reach out to national 24×7 crisis helplines immediately.
             </span>
           </div>
-          <div className="flex items-center gap-4 shrink-0 font-mono text-[11px]">
-            <a href="tel:14416" className="text-amber-300 hover:underline">Tele-MANAS: 14416</a>
-            <span className="text-slate-600">&bull;</span>
-            <a href="tel:18005990019" className="text-amber-300 hover:underline">KIRAN: 1800-599-0019</a>
-            <span className="text-slate-600">&bull;</span>
-            <a href="tel:112" className="text-red-400 hover:underline">Emergency: 112</a>
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 font-mono text-[11px] flex-wrap justify-center">
+            <a href="tel:14416" className="px-3 py-1 rounded-full bg-amber-500/15 border border-amber-400/35 text-amber-300 hover:bg-amber-500/25 hover:border-amber-300 transition-all shadow-sm">Tele-MANAS: 14416</a>
+            <a href="tel:18005990019" className="px-3 py-1 rounded-full bg-amber-500/15 border border-amber-400/35 text-amber-300 hover:bg-amber-500/25 hover:border-amber-300 transition-all shadow-sm">KIRAN: 1800-599-0019</a>
+            <a href="tel:112" className="px-3 py-1 rounded-full bg-rose-500/15 border border-rose-400/35 text-rose-300 hover:bg-rose-500/25 hover:border-rose-300 transition-all shadow-sm">Emergency: 112</a>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           
           {/* Col 1 & 2: Brand & Institutional Positioning */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-teal-500/15 backdrop-blur-md border border-teal-500/30 flex items-center justify-center p-1.5 shadow-[0_0_15px_rgba(45,212,191,0.2)]">
+            <Link to="/" className="flex items-center gap-3 mb-4 group">
+              <div className="w-9 h-9 rounded-xl bg-teal-500/15 backdrop-blur-md border border-teal-500/30 flex items-center justify-center p-1.5 shadow-[0_0_15px_rgba(45,212,191,0.2)] group-hover:scale-105 transition-transform">
                 <img 
                   src="/assets/crest-clean-circle.png" 
                   alt="RedKross Logo" 
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="font-bold text-lg text-white tracking-wide">
-                REDKROSS <span className="text-teal-400 font-mono text-sm font-semibold">PSYCHOLOGY</span>
+              <span className="font-royal font-bold text-lg tracking-wide uppercase bg-gradient-to-r from-teal-200 via-white to-teal-300 bg-clip-text text-transparent">
+                RedKross Psychology
               </span>
             </Link>
 
-            <p className="text-xs text-slate-300 leading-relaxed mb-4 max-w-sm">
+            <p className="text-xs text-slate-300 leading-relaxed mb-4 max-w-sm font-light">
               The official psychology and mental-wellbeing wing of RedKross Research Foundation. Grounded in empathetic listening, ethical boundaries, evidence-informed research, and accessible community care.
             </p>
 
-            <div className="p-4 rounded-2xl glass-card text-[11px] font-mono text-slate-400 space-y-1.5">
+            <div className="p-4 rounded-2xl bg-[#06101B]/80 backdrop-blur-xl border border-teal-500/20 text-[11px] font-mono text-slate-400 space-y-1.5 shadow-md shadow-black/30">
               <div><strong className="text-slate-300">Parent Body:</strong> {identity.parentOrg.name}</div>
               <div><strong className="text-slate-300">Corporate Status:</strong> {identity.parentOrg.legalStatus}</div>
               <div><strong className="text-slate-300">Govt CIN:</strong> {identity.parentOrg.cin} (RoC Haryana)</div>
@@ -129,8 +144,11 @@ export default function PsychologyFooter() {
           </div>
         </div>
 
+        {/* Feathered Specular Divider (Smooth fade out at both sides - No Hard Cut Lines) */}
+        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-teal-500/25 to-transparent my-8" />
+
         {/* Interactive Hand-Drawn Doodle Crew Brandmark for RedKross Psychology */}
-        <div className="my-8 pt-8 border-t border-teal-500/15 overflow-hidden">
+        <div className="my-6 overflow-hidden">
           <DoodleCrewFooter
             as="div"
             showTop={false}
@@ -165,8 +183,11 @@ export default function PsychologyFooter() {
           />
         </div>
 
+        {/* Feathered Specular Divider */}
+        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-teal-500/20 to-transparent my-6" />
+
         {/* Bottom Legal & Safeguarding Bar */}
-        <div className="pt-8 border-t border-teal-500/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <div className="py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
           <div className="text-slate-400 text-center sm:text-left">
             &copy; {new Date().getFullYear()} RedKross Research Foundation. All rights reserved. Registered Section 8 Non-Profit Organisation.
           </div>
