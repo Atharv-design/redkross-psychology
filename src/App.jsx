@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import PsychologyNavbar from './components/PsychologyNavbar';
 import PsychologyFooter from './components/PsychologyFooter';
 import PsychologyBackgroundWatermark from './components/PsychologyBackgroundWatermark';
@@ -76,6 +77,9 @@ export default function App() {
 
       {/* 6. Unified Institutional Footer (Glassmorphic) */}
       <PsychologyFooter />
+
+      {/* 7. Vercel Web Analytics */}
+      <Analytics />
     </div>
   );
 }
