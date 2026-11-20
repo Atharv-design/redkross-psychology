@@ -29,6 +29,23 @@ export default function AmbienceAudioPlayer() {
   const leaveTimerRef = useRef(null);
   const containerRef = useRef(null);
 
+  // Broadcast volume slider state so Dial button smoothly hides when volume is open
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent('audio-volume-toggle', { detail: { isOpen: showVolumeSlider } }));
+  }, [showVolumeSlider]);
+
+  // Listen for dial popover state to close volume slider if dial opens
+  useEffect(() => {
+    const handleDialToggle = (e) => {
+      if (e.detail?.isOpen) {
+        setShowVolumeSlider(false);
+        setIsPinned(false);
+      }
+    };
+    window.addEventListener('dial-popover-toggle', handleDialToggle);
+    return () => window.removeEventListener('dial-popover-toggle', handleDialToggle);
+  }, []);
+
   // Web Audio API Synthesizer as resilient fallback
   const startSynth = () => {
     try {
@@ -224,7 +241,7 @@ export default function AmbienceAudioPlayer() {
         onPause={() => setIsPlaying(false)}
       />
 
-      {/* Volume Slider Card with ZERO-GAP padding container */}
+      {/* Volume Slider Card - Opens UPWARDS directly above audio player */}
       {showVolumeSlider && (
         <div 
           className="absolute bottom-full right-0 pb-3 z-50 pointer-events-auto"
@@ -300,13 +317,13 @@ export default function AmbienceAudioPlayer() {
         </div>
       )}
 
-      {/* Main Glassmorphic Control Pill - Pure Icon Minimal Design */}
-      <div className="flex items-center p-1.5 rounded-full bg-[#081524]/95 backdrop-blur-2xl border border-teal-500/40 hover:border-teal-300 shadow-[0_8px_32px_rgba(0,0,0,0.65)] hover:shadow-[0_0_25px_rgba(45,212,191,0.35)] transition-all duration-300 ring-1 ring-white/5">
+      {/* Main Glassmorphic Control Pill - Pure Icon Minimal Design (Exact w-[94px] h-[48px]) */}
+      <div className="flex items-center justify-between w-[94px] h-[48px] p-1.5 rounded-full bg-[#081524]/95 backdrop-blur-2xl border border-teal-500/40 hover:border-teal-300 shadow-[0_8px_32px_rgba(0,0,0,0.65)] hover:shadow-[0_0_25px_rgba(45,212,191,0.35)] transition-all duration-300 ring-1 ring-white/5">
         
         {/* Play / Pause Circular Icon Button */}
         <button
           onClick={togglePlay}
-          className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none ${
+          className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none shrink-0 ${
             isPlaying 
               ? 'bg-teal-400 text-[#08121E] shadow-[0_0_15px_rgba(45,212,191,0.6)] scale-105' 
               : 'bg-teal-500/20 text-teal-300 border border-teal-500/40 hover:bg-teal-500/30 hover:scale-105'
@@ -322,12 +339,12 @@ export default function AmbienceAudioPlayer() {
         </button>
 
         {/* Vertical Divider */}
-        <div className="w-[1px] h-5 bg-teal-500/25 mx-1" />
+        <div className="w-[1px] h-5 bg-teal-500/25 shrink-0" />
 
         {/* Dedicated Volume Icon Button */}
         <button
           onClick={toggleVolumePopover}
-          className={`w-9 h-9 rounded-full text-slate-300 hover:text-teal-200 hover:bg-teal-500/15 transition-all focus:outline-none cursor-pointer flex items-center justify-center ${
+          className={`w-9 h-9 rounded-full text-slate-300 hover:text-teal-200 hover:bg-teal-500/15 transition-all focus:outline-none cursor-pointer flex items-center justify-center shrink-0 ${
             showVolumeSlider ? 'text-teal-300 bg-teal-500/20' : ''
           }`}
           title="Adjust Volume"

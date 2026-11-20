@@ -4,6 +4,7 @@ import PsychologyNavbar from './components/PsychologyNavbar';
 import PsychologyFooter from './components/PsychologyFooter';
 import PsychologyBackgroundWatermark from './components/PsychologyBackgroundWatermark';
 import AmbienceAudioPlayer from './components/AmbienceAudioPlayer';
+import FloatingDialHelpline from './components/FloatingDialHelpline';
 
 // Primary Pages
 import HomePage from './pages/HomePage';
@@ -37,6 +38,9 @@ export default function App() {
 
       {/* 2. Soft Rain & Forest Ambience Sound Controller */}
       <AmbienceAudioPlayer />
+
+      {/* 3. Floating 24x7 Helpline Dial Collapse Button (Directly above Audio Controller) */}
+      <FloatingDialHelpline />
 
       {/* 3. Floating Glassmorphic Pill Navbar (with Top Crisis Strip) */}
       <PsychologyNavbar />

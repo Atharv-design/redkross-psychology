@@ -7,7 +7,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react({
+      include: '**/*.{jsx,tsx,js,ts}',
+    }),
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -15,6 +19,13 @@ export default defineConfig({
   },
   server: {
     port: 5175,
-    host: true
-  }
+    host: true,
+    watch: {
+      usePolling: true,
+      interval: 100,
+    },
+    hmr: {
+      overlay: true,
+    },
+  },
 });

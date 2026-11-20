@@ -21,13 +21,15 @@
 export const CANONICAL_DOMAINS = {
   main: 'https://redkross.org.in',
   cyber: 'https://cyber.redkross.org.in',
-  psychology: 'https://psychology.redkross.org.in'
+  psychology: 'https://psychology.redkross.org.in',
+  academy: 'https://academy.redkross.org.in'
 };
 
 export const DISPLAY_LABELS = {
   main: 'redkross.org.in',
   cyber: 'cyber.redkross.org.in',
-  psychology: 'psychology.redkross.org.in'
+  psychology: 'psychology.redkross.org.in',
+  academy: 'academy.redkross.org.in'
 };
 
 export function getEcosystemUrl(platform, path = '') {
@@ -48,6 +50,9 @@ export function getEcosystemUrl(platform, path = '') {
   if (platform === 'psychology' && import.meta.env?.VITE_PSYCHOLOGY_URL) {
     return `${import.meta.env.VITE_PSYCHOLOGY_URL}${cleanPath}`;
   }
+  if (platform === 'academy' && import.meta.env?.VITE_ACADEMY_URL) {
+    return `${import.meta.env.VITE_ACADEMY_URL}${cleanPath}`;
+  }
 
   const hostname = window.location.hostname.toLowerCase();
   const currentPort = window.location.port;
@@ -58,6 +63,9 @@ export function getEcosystemUrl(platform, path = '') {
   if (isLocal) {
     if (platform === 'psychology') {
       return `http://${hostname}:5175${cleanPath}`;
+    }
+    if (platform === 'academy') {
+      return `http://${hostname}:5176${cleanPath}`;
     }
     if (platform === 'cyber') {
       return `http://${hostname}:5174${cleanPath}`;
@@ -75,6 +83,9 @@ export function getEcosystemUrl(platform, path = '') {
     }
     if (platform === 'cyber') {
       return `https://redkross-cybersecurity.vercel.app${cleanPath}`;
+    }
+    if (platform === 'academy') {
+      return `https://redkross-academy.vercel.app${cleanPath}`;
     }
     if (platform === 'psychology') {
       return `https://redkross-psychology.vercel.app${cleanPath}`;

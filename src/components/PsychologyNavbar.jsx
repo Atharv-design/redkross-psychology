@@ -6,7 +6,7 @@ import {
   ArrowUpRight, 
   ExternalLink 
 } from 'lucide-react';
-import UrgentHelpStrip from './UrgentHelpStrip';
+import EcosystemHeaderStrip from './EcosystemHeaderStrip';
 import { PSYCHOLOGY_DATA } from '../data/psychologyData';
 
 export default function PsychologyNavbar() {
@@ -42,9 +42,9 @@ export default function PsychologyNavbar() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 pointer-events-none select-none">
-      {/* 1. Mandatory Top Urgent-Help Crisis Strip (Pointer-events-auto) */}
+      {/* 1. Global RedKross Ecosystem Portals Header Strip */}
       <div className="pointer-events-auto">
-        <UrgentHelpStrip />
+        <EcosystemHeaderStrip />
       </div>
 
       {/* 2. Floating Rounded-Full Glassmorphic Pill Navbar (Structure like Cybersecurity Navbar) */}
